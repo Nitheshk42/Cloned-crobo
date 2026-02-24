@@ -1,47 +1,37 @@
-const http = require('http');
-const fs = require('fs');
-const path = require('path');
-const winston = require('winston');
-const LokiTransport = require('winston-loki');
 const app = require('./app');
+const logger = require('./logger');
 require('dotenv').config();
 
-// Loki logger (Splunk-style)
-const logger = winston.createLogger({
-  level: 'info',
-  format: winston.format.combine(
-    winston.format.timestamp(),
-    winston.format.json()
-  ),
-  transports: [
-    new winston.transports.Console(),
-    new LokiTransport({
-      host: 'http://localhost:3100',
-      labels: { app: 'nithesh-backend', env: 'local' },
-      onConnectionError: (err) => console.error('Loki connection error:', err),
-      gracefulShutdown: true,
-      clearOnError: false,
-      replaceTimestamp: true,
-    })
-  ]
-});
-
 const PORT = process.env.PORT || 5001;
-
-// Load SSL certificates
-// const options = {
-//   cert: fs.readFileSync(path.join(__dirname, '../../../certs/localhost.crt')),
-//   key: fs.readFileSync(path.join(__dirname, '../../../certs/localhost.key'))
-// };
 
 // Log startup
 logger.info('🚀 Backend starting', { port: PORT, env: process.env.NODE_ENV });
 
-http.createServer(options, app).listen(PORT, () => {
-  logger.info('🔒 HTTPS Server running', { 
-    url: `https://localhost:${PORT}`,
-    swagger: `https://localhost:${PORT}/api-docs`
+// Use HTTP on production (Render handles SSL)
+// Use HTTPS on local (self signed cert)
+if (process.env.NODE_ENV === 'production') {
+  app.listen(PORT, () => {
+    logger.info('🚀 HTTP Server running on production', {
+      port: PORT
+    });
+    console.log(`🚀 Server running on port ${PORT}`);
   });
-  console.log(`🔒 HTTPS Server running on https://localhost:${PORT}`);
-  console.log(`📚 Swagger docs at https://localhost:${PORT}/api-docs`);
-});
+} else {
+  const https = require('https');
+  const fs = require('fs');
+  const path = require('path');
+
+  const options = {
+    cert: fs.readFileSync(path.join(__dirname, '../../../certs/localhost.crt')),
+    key: fs.readFileSync(path.join(__dirname, '../../../certs/localhost.key'))
+  };
+
+  https.createServer(options, app).listen(PORT, () => {
+    logger.info('🔒 HTTPS Server running locally', {
+      url: `https://localhost:${PORT}`,
+      swagger: `https://localhost:${PORT}/api-docs`
+    });
+    console.log(`🔒 HTTPS Server running on https://localhost:${PORT}`);
+    console.log(`📚 Swagger docs at https://localhost:${PORT}/api-docs`);
+  });
+}
