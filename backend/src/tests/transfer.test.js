@@ -12,6 +12,26 @@ let userId = '';
 
 // ─── SETUP — Login before all tests ─────────────────────────
 beforeAll(async () => {
+  // Create test user first (in case it doesn't exist)
+  const bcrypt = require('bcryptjs');
+  const hashedPassword = await bcrypt.hash('password123', 10);
+  
+  // Delete existing test user if exists
+  await prisma.user.deleteMany({
+    where: { email: 'john@email.com' }
+  });
+
+  // Create fresh test user
+  const user = await prisma.user.create({
+    data: {
+      name: 'John Doe',
+      email: 'john@email.com',
+      password: hashedPassword,
+      balance: 1000
+    }
+  });
+
+  // Login to get token
   const response = await request(app)
     .post('/api/auth/login')
     .send({
@@ -20,13 +40,7 @@ beforeAll(async () => {
     });
 
   token = response.body.token;
-  userId = response.body.user.id;
-
-  // Give John some balance for testing
-  await prisma.user.update({
-    where: { id: userId },
-    data: { balance: 1000 }
-  });
+  userId = user.id;
 });
 
 // ─── UNIT TESTS ─────────────────────────────────────────────
