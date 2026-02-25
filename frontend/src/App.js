@@ -22,9 +22,3 @@ function App() {
 }
 
 export default App;
-```
-
-Your URLs will now look like:
-```
-https://crobo-frontend.onrender.com/#/dashboard
-https://crobo-frontend.onrender.com/#/history
