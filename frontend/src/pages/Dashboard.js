@@ -286,9 +286,10 @@ useEffect(() => {
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
                 <div>
                   <p style={{ fontSize: '13px', color: '#888' }}>Daily</p>
-                  <p style={{ fontWeight: '700', fontSize: '20px', color: '#0f4c81' }}>$2,000 <span style={{ fontSize: '13px', color: '#aaa', fontWeight: '400' }}>/ $5,000</span></p>
+                  <p style={{ fontWeight: '700', fontSize: '20px', color: '#0f4c81' }}>${limits.daily.used.toFixed(2)} 
+                    <span style={{ fontSize: '13px', color: '#aaa', fontWeight: '400' }}>/ ${limits.daily.limit.toLocaleString()}</span></p>
                 </div>
-                <CircleProgress percentage={40} color="#0f4c81" size={60} />
+                <CircleProgress percentage={limits.daily.percentage} color="#0f4c81" size={60} />
               </div>
 
               <hr style={{ borderColor: '#f5f5f5', marginBottom: '16px' }} />
@@ -297,9 +298,10 @@ useEffect(() => {
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <div>
                   <p style={{ fontSize: '13px', color: '#888' }}>Weekly</p>
-                  <p style={{ fontWeight: '700', fontSize: '20px', color: '#1a7a6e' }}>$8,000 <span style={{ fontSize: '13px', color: '#aaa', fontWeight: '400' }}>/ $20,000</span></p>
+                  <p style={{ fontWeight: '700', fontSize: '20px', color: '#1a7a6e' }}>${limits.weekly.used.toFixed(2)} 
+                    <span style={{ fontSize: '13px', color: '#aaa', fontWeight: '400' }}>/ ${limits.weekly.limit.toLocaleString()}</span></p>
                 </div>
-                <CircleProgress percentage={40} color="#1a7a6e" size={60} />
+                <CircleProgress percentage={limits.weekly.percentage} color="#1a7a6e" size={60} />
               </div>
             </div>
 
