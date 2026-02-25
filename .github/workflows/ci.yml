@@ -48,6 +48,7 @@ jobs:
         run: |
           echo "DATABASE_URL=postgresql://postgres:postgres@localhost:5432/crobo?schema=public" >> .env
           echo "JWT_SECRET=crobo_super_secret_key_2024" >> .env
+          echo "STRIPE_SECRET_KEY=${{ secrets.STRIPE_SECRET_KEY }}" >> .env
 
       # 5. Generate Prisma client
       - name: Generate Prisma client
