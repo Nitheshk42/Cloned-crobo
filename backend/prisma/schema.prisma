@@ -30,6 +30,7 @@ model User {
   createdAt DateTime @default(now())
 
   transactions Transaction[]
+  deposits Deposit[]
 }
 
 model Transaction {
@@ -46,3 +47,14 @@ model Transaction {
 
   user User @relation(fields: [userId], references: [id])
 }
+
+model Deposit {
+  id        String   @id @default(uuid())
+  userId    String
+  amount    Float
+  status    String   @default("Completed")
+  createdAt DateTime @default(now())
+
+  user      User     @relation(fields: [userId], references: [id])
+}
+

@@ -99,7 +99,14 @@ const confirmPayment = async (req, res) => {
       where: { id: userId },
       data: { balance: { increment: amount } }
     });
-
+        // Save deposit record
+        await prisma.deposit.create({
+        data: {
+            userId,
+            amount,
+            status: 'Completed'
+        }
+        });
     logger.info('Balance topped up', { userId, amount });
 
     res.status(200).json({

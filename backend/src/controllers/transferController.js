@@ -35,6 +35,42 @@ const sendMoney = async (req, res) => {
       return res.status(400).json({ message: 'Insufficient balance!' });
     }
 
+    //  Check daily limit
+      const DAILY_LIMIT = 5000;
+      const WEEKLY_LIMIT = 20000;
+
+      const startOfDay = new Date();
+      startOfDay.setHours(0, 0, 0, 0);
+
+      const startOfWeek = new Date();
+      startOfWeek.setDate(startOfWeek.getDate() - startOfWeek.getDay() + 1);
+      startOfWeek.setHours(0, 0, 0, 0);
+
+      const dailyTransactions = await prisma.transaction.findMany({
+        where: { userId, status: 'Completed', createdAt: { gte: startOfDay } }
+      });
+
+      const weeklyTransactions = await prisma.transaction.findMany({
+        where: { userId, status: 'Completed', createdAt: { gte: startOfWeek } }
+      });
+
+      const dailyUsed = dailyTransactions.reduce((sum, t) => sum + t.amountSent, 0);
+      const weeklyUsed = weeklyTransactions.reduce((sum, t) => sum + t.amountSent, 0);
+
+      if (dailyUsed + amountSent > DAILY_LIMIT) {
+        logger.warn('Transfer failed - daily limit exceeded', { userId, dailyUsed, amountSent });
+        return res.status(400).json({ 
+          message: `Daily limit exceeded! You can only send $${(DAILY_LIMIT - dailyUsed).toFixed(2)} more today!` 
+        });
+      }
+
+      if (weeklyUsed + amountSent > WEEKLY_LIMIT) {
+        logger.warn('Transfer failed - weekly limit exceeded', { userId, weeklyUsed, amountSent });
+        return res.status(400).json({ 
+          message: `Weekly limit exceeded! You can only send $${(WEEKLY_LIMIT - weeklyUsed).toFixed(2)} more this week!` 
+        });
+      }
+
     // 5. Deduct balance from user
     await prisma.user.update({
       where: { id: userId },
@@ -84,10 +120,29 @@ const getHistory = async (req, res) => {
       where: { userId },
       orderBy: { createdAt: 'desc' }
     });
+    // Get all deposits
+    const deposits = await prisma.deposit.findMany({
+      where: { userId },
+      orderBy: { createdAt: 'desc' }
+    });
+    // Add type to each record
+    const formattedTransactions = transactions.map(t => ({
+      ...t,
+      type: 'transfer'
+    }));
 
-    logger.info('History fetched', { userId, count: transactions.length });  // ← ADDED
+    const formattedDeposits = deposits.map(d => ({
+      ...d,
+      type: 'deposit'
+    }));
 
-    res.status(200).json({ transactions });
+    // Combine and sort by date newest first
+    const allHistory = [...formattedTransactions, ...formattedDeposits]
+      .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+
+    logger.info('History fetched', { userId, count: transactions.length, deposits: deposits.length });  // ← ADDED
+
+    res.status(200).json({ history: allHistory });
 
   } catch (error) {
     logger.error('History error', { error: error.message });  // ← ADDED

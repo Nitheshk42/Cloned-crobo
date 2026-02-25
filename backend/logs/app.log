@@ -37,3 +37,57 @@
 {"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-25T12:39:13.013Z","userId":"3d639f83-625e-4dfb-bc1f-65f9a585f8eb","weeklyUsed":350}
 {"amount":200,"level":"info","message":"Payment intent created","timestamp":"2026-02-25T12:39:35.815Z","userId":"3d639f83-625e-4dfb-bc1f-65f9a585f8eb"}
 {"amount":200,"level":"info","message":"Balance topped up","timestamp":"2026-02-25T12:39:36.953Z","userId":"3d639f83-625e-4dfb-bc1f-65f9a585f8eb"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-25T19:01:09.874Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-25T19:01:09.891Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-25T19:01:12.703Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-25T19:01:12.717Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-25T19:03:13.031Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-25T19:03:13.046Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-25T19:03:13.547Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-25T19:03:13.562Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-25T19:03:15.708Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-25T19:03:15.723Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-25T19:03:37.208Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-25T19:03:37.223Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-25T19:03:39.232Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-25T19:03:39.247Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-25T19:03:50.816Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-25T19:03:50.830Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-25T19:03:59.665Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-25T19:03:59.680Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-25T19:04:00.804Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-25T19:04:00.818Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-25T19:04:08.154Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-25T19:04:08.170Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-25T19:04:12.341Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-25T19:04:12.357Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-25T19:04:46.785Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-25T19:04:46.800Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-25T19:05:01.050Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-25T19:05:01.064Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-25T19:05:02.180Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-25T19:05:02.195Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-25T19:05:05.259Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-25T19:05:05.274Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-25T19:05:06.661Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-25T19:05:06.677Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-25T19:05:08.304Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-25T19:05:08.319Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-25T19:05:20.315Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-25T19:05:20.329Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-25T19:05:25.200Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-25T19:05:25.215Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-25T19:27:37.230Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-25T19:27:37.248Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-25T19:28:03.058Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-25T19:28:03.072Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-25T19:28:06.318Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-25T19:28:06.332Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-25T19:28:07.326Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-25T19:28:07.340Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-25T19:28:18.122Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-25T19:28:18.136Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-25T19:28:21.317Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-25T19:28:21.332Z","url":"https://localhost:5001"}
+{"email":"test2@email.com","level":"info","message":"User logged in successfully","timestamp":"2026-02-25T19:31:54.163Z","userId":"68ce6587-7ef8-4f25-8526-4317b8e04155"}
+{"count":0,"deposits":0,"level":"info","message":"History fetched","timestamp":"2026-02-25T19:35:38.086Z","userId":"68ce6587-7ef8-4f25-8526-4317b8e04155"}
