@@ -524,3 +524,6 @@
 {"level":"info","message":"Balance fetched","timestamp":"2026-02-26T12:55:51.653Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
 {"count":1,"level":"info","message":"Recipients fetched","timestamp":"2026-02-26T12:55:51.653Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
 {"dailyUsed":50,"level":"info","message":"Limits fetched","timestamp":"2026-02-26T12:55:51.657Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":50}
+{"email":"test4@gmail.com","level":"warn","message":"Login failed - user not found","timestamp":"2026-02-26T14:10:51.412Z"}
+{"email":"test4@gmail.com","level":"warn","message":"Login failed - user not found","timestamp":"2026-02-26T14:10:54.266Z"}
+{"email":"test4@gmail.com","level":"warn","message":"Login failed - user not found","timestamp":"2026-02-26T14:11:02.441Z"}
