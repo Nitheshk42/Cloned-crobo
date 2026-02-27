@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const { register, login } = require('../controllers/authController');
+const { register, login, logout, googleAuth } = require('../controllers/authController');
+const { protect } = require('../middleware/authMiddleware');
 
 /**
  * @swagger
@@ -58,5 +59,45 @@ router.post('/register', register);
  *         description: Invalid email or password
  */
 router.post('/login', login);
+
+/**
+ * @swagger
+ * /api/auth/logout:
+ *   post:
+ *     summary: Logout user
+ *     tags: [Auth]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Logged out successfully
+ *       401:
+ *         description: Unauthorized
+ */
+router.post('/logout', protect, logout);
+
+/**
+ * @swagger
+ * /api/auth/google:
+ *   post:
+ *     summary: Login or register with Google
+ *     tags: [Auth]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               credential:
+ *                 type: string
+ *                 example: eyJhbGciOiJSUzI1NiIsImtpZCI6...
+ *     responses:
+ *       200:
+ *         description: Google login successful with JWT token
+ *       401:
+ *         description: Google authentication failed
+ */
+router.post('/google', googleAuth);
 
 module.exports = router;

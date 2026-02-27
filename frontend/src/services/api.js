@@ -17,6 +17,8 @@ API.interceptors.request.use((config) => {
 // ─── AUTH ────────────────────────────────────────────────────
 export const registerUser = (data) => API.post('/auth/register', data);
 export const loginUser = (data) => API.post('/auth/login', data);
+export const logoutUser = () => API.post('/auth/logout');
+export const googleAuth = (data) => API.post('/auth/google', data);
 
 // ─── TRANSFER ────────────────────────────────────────────────
 export const sendMoney = (data) => API.post('/transfer/send', data);

@@ -4,6 +4,9 @@ const jwt = require('jsonwebtoken');
 const { PrismaClient } = require('@prisma/client');
 const { PrismaPg } = require('@prisma/adapter-pg');
 const logger = require('../logger');  // ← ADDED
+const { OAuth2Client } = require('google-auth-library');
+
+const client = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
 const adapter = new PrismaPg({ connectionString: process.env.DATABASE_URL });
 const prisma = new PrismaClient({ adapter });
@@ -102,4 +105,66 @@ const login = async (req, res) => {
   }
 };
 
-module.exports = { register, login };
+// ─── GOOGLE AUTH ─────────────────────────────────────────────
+const googleAuth = async (req, res) => {
+  try {
+    const { credential } = req.body;
+
+    // Verify Google token
+    const ticket = await client.verifyIdToken({
+      idToken: credential,
+      audience: process.env.GOOGLE_CLIENT_ID
+    });
+
+    const payload = ticket.getPayload();
+    const { email, name, sub: googleId } = payload;
+
+    // Check if user exists
+    let user = await prisma.user.findUnique({ where: { email } });
+
+    if (!user) {
+      // Create new user
+      user = await prisma.user.create({
+        data: {
+          name,
+          email,
+          password: `google_${googleId}`,
+          balance: 0
+        }
+      });
+      logger.info('New Google user registered', { userId: user.id, email });
+    } else {
+      logger.info('Google user logged in', { userId: user.id, email });
+    }
+
+    // Create JWT token
+    const token = jwt.sign(
+      { userId: user.id, email: user.email },
+      process.env.JWT_SECRET,
+      { expiresIn: '7d' }
+    );
+
+    res.status(200).json({
+      message: 'Google login successful!',
+      token,
+      user: { id: user.id, name: user.name, email: user.email, balance: user.balance }
+    });
+
+  } catch (error) {
+    logger.error('Google auth error', { error: error.message });
+    res.status(401).json({ message: 'Google authentication failed!' });
+  }
+};
+// ─── LOGOUT ──────────────────────────────────────────────────
+const logout = async (req, res) => {
+  try {
+    const userId = req.user.userId;
+    logger.info('User logged out', { userId });
+    res.status(200).json({ message: 'Logged out successfully!' });
+  } catch (error) {
+    logger.error('Logout error', { error: error.message });
+    res.status(500).json({ message: 'Something went wrong!' });
+  }
+};
+
+module.exports = { register, login, googleAuth, logout };

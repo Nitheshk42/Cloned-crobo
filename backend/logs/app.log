@@ -527,3 +527,127 @@
 {"email":"test4@gmail.com","level":"warn","message":"Login failed - user not found","timestamp":"2026-02-26T14:10:51.412Z"}
 {"email":"test4@gmail.com","level":"warn","message":"Login failed - user not found","timestamp":"2026-02-26T14:10:54.266Z"}
 {"email":"test4@gmail.com","level":"warn","message":"Login failed - user not found","timestamp":"2026-02-26T14:11:02.441Z"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-26T16:55:23.154Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-26T16:55:23.170Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-26T16:57:38.580Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-26T16:57:38.593Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-26T16:58:07.192Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-26T16:58:07.207Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-26T16:58:19.544Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-26T16:58:19.559Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-26T16:58:21.071Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-26T16:58:21.087Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-26T16:58:22.795Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-26T16:58:22.810Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-26T16:58:29.082Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-26T16:58:29.097Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-26T16:58:46.447Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-26T16:58:46.462Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-26T16:58:48.649Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-26T16:58:48.664Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-26T16:58:54.836Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-26T16:58:54.851Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-26T17:00:39.758Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-26T17:00:39.773Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-26T17:01:05.235Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-26T17:01:05.250Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-26T17:01:08.152Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-26T17:01:08.166Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-26T17:01:22.200Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-26T17:01:22.215Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-26T17:06:35.695Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-26T17:06:35.710Z","url":"https://localhost:5001"}
+{"error":"The verifyIdToken method requires an ID Token","level":"error","message":"Google auth error","timestamp":"2026-02-26T17:22:28.960Z"}
+{"email":"kumarnithesh.1423@gmail.com","level":"info","message":"New Google user registered","timestamp":"2026-02-26T17:25:53.013Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-26T17:25:53.122Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"count":0,"level":"info","message":"Recipients fetched","timestamp":"2026-02-26T17:25:53.125Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-26T17:25:53.126Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468","weeklyUsed":0}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-26T17:25:53.127Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"count":0,"level":"info","message":"Recipients fetched","timestamp":"2026-02-26T17:25:53.133Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-26T17:25:53.138Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468","weeklyUsed":0}
+{"count":0,"level":"info","message":"Recipients fetched","timestamp":"2026-02-26T17:26:16.916Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-26T17:26:16.918Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468","weeklyUsed":0}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-26T17:26:16.927Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"count":0,"level":"info","message":"Recipients fetched","timestamp":"2026-02-26T17:26:16.930Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-26T17:26:16.947Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468","weeklyUsed":0}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-26T17:26:16.963Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-26T17:54:22.751Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"count":0,"level":"info","message":"Recipients fetched","timestamp":"2026-02-26T17:54:22.755Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-26T17:54:22.755Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468","weeklyUsed":0}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-26T17:54:22.761Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"count":0,"level":"info","message":"Recipients fetched","timestamp":"2026-02-26T17:54:22.768Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-26T17:54:22.770Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468","weeklyUsed":0}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-26T18:15:11.741Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"count":0,"level":"info","message":"Recipients fetched","timestamp":"2026-02-26T18:15:11.748Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-26T18:15:11.777Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468","weeklyUsed":0}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-26T18:15:11.790Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"count":0,"level":"info","message":"Recipients fetched","timestamp":"2026-02-26T18:15:11.798Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-26T18:15:11.805Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468","weeklyUsed":0}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-26T18:24:42.234Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"count":0,"level":"info","message":"Recipients fetched","timestamp":"2026-02-26T18:24:42.251Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-26T18:24:42.258Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468","weeklyUsed":0}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-26T18:24:42.268Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"count":0,"level":"info","message":"Recipients fetched","timestamp":"2026-02-26T18:24:42.274Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-26T18:24:42.277Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468","weeklyUsed":0}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-26T18:25:58.444Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-26T18:26:02.547Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-26T18:26:06.810Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-26T18:26:06.836Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468","weeklyUsed":0}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-26T18:26:06.847Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468","weeklyUsed":0}
+{"count":0,"level":"info","message":"Recipients fetched","timestamp":"2026-02-26T18:26:06.878Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"count":0,"level":"info","message":"Recipients fetched","timestamp":"2026-02-26T18:26:06.886Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-26T18:26:06.888Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"count":0,"level":"info","message":"Recipients fetched","timestamp":"2026-02-26T18:26:10.514Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-26T18:26:10.522Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468","weeklyUsed":0}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-26T18:26:10.527Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"count":0,"level":"info","message":"Recipients fetched","timestamp":"2026-02-26T18:26:10.549Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-26T18:26:10.559Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-26T18:26:10.563Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468","weeklyUsed":0}
+{"count":0,"level":"info","message":"Recipients fetched","timestamp":"2026-02-26T18:26:14.060Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-26T18:26:14.062Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468","weeklyUsed":0}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-26T18:26:14.063Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"count":0,"level":"info","message":"Recipients fetched","timestamp":"2026-02-26T18:26:14.073Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-26T18:26:14.075Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-26T18:26:14.076Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468","weeklyUsed":0}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-26T18:26:23.547Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-26T18:26:28.093Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-26T18:26:29.568Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468","weeklyUsed":0}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-26T18:26:29.574Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468","weeklyUsed":0}
+{"count":0,"level":"info","message":"Recipients fetched","timestamp":"2026-02-26T18:26:29.590Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"count":0,"level":"info","message":"Recipients fetched","timestamp":"2026-02-26T18:26:29.594Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-26T18:26:29.601Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-26T18:26:29.605Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-26T18:26:37.307Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-26T18:26:41.814Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-26T18:26:43.334Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468","weeklyUsed":0}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-26T18:26:43.339Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-26T18:26:43.347Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"count":0,"level":"info","message":"Recipients fetched","timestamp":"2026-02-26T18:26:43.373Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-26T18:26:43.376Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468","weeklyUsed":0}
+{"count":0,"level":"info","message":"Recipients fetched","timestamp":"2026-02-26T18:26:43.377Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"count":0,"level":"info","message":"Recipients fetched","timestamp":"2026-02-26T18:26:46.649Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-26T18:26:46.652Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468","weeklyUsed":0}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-26T18:26:46.654Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"count":0,"level":"info","message":"Recipients fetched","timestamp":"2026-02-26T18:26:46.674Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-26T18:26:46.676Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468","weeklyUsed":0}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-26T18:26:46.679Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-26T18:26:52.178Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-26T18:27:00.852Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-26T18:27:02.055Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468","weeklyUsed":0}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-26T18:27:02.066Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468","weeklyUsed":0}
+{"count":0,"level":"info","message":"Recipients fetched","timestamp":"2026-02-26T18:27:02.121Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"count":0,"level":"info","message":"Recipients fetched","timestamp":"2026-02-26T18:27:02.170Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-26T18:27:02.309Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-26T18:27:02.392Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-26T19:18:19.714Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"count":0,"level":"info","message":"Recipients fetched","timestamp":"2026-02-26T19:18:19.717Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-26T19:18:19.719Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468","weeklyUsed":0}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-26T19:18:19.720Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"count":0,"level":"info","message":"Recipients fetched","timestamp":"2026-02-26T19:18:19.724Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-26T19:18:19.728Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468","weeklyUsed":0}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-26T19:18:31.145Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468","weeklyUsed":0}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-26T19:18:31.155Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468","weeklyUsed":0}
+{"count":0,"level":"info","message":"Recipients fetched","timestamp":"2026-02-26T19:18:31.177Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-26T19:18:31.178Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"count":0,"level":"info","message":"Recipients fetched","timestamp":"2026-02-26T19:18:31.184Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-26T19:18:31.184Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
