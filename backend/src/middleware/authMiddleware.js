@@ -1,29 +1,25 @@
-require('dotenv').config();
 const jwt = require('jsonwebtoken');
+const logger = require('../logger');
 
 const protect = (req, res, next) => {
   try {
-    // 1. Get token from request header
     const authHeader = req.headers.authorization;
 
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      return res.status(401).json({ message: 'No token! Please login first.' });
+      logger.warn('No token provided');
+      return res.status(401).json({ message: 'No token provided!' });
     }
 
-    // 2. Extract the token
     const token = authHeader.split(' ')[1];
 
-    // 3. Verify the token
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-
-    // 4. Attach user info to request
+    // Now verifies using ACCESS_TOKEN_SECRET
+    const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
     req.user = decoded;
-
-    // 5. Move to next function
     next();
 
   } catch (error) {
-    res.status(401).json({ message: 'Invalid token! Please login again.' });
+    logger.warn('Invalid token', { error: error.message });
+    return res.status(401).json({ message: 'Invalid or expired token!' });
   }
 };
 

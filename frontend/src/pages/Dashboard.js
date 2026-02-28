@@ -1,10 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FaUserCircle, FaLinkedin, FaTwitter, FaInstagram } from 'react-icons/fa';
-import { getBalance, getLimits, getRecipients } from '../services/api';
+import { getBalance, getLimits, getRecipients, logoutUser, clearAccessToken } from '../services/api';
 import AddMoneyModal from '../components/AddMoneyModal';
 import AddRecipientModal from '../components/AddRecipientModal';
-
 
 
 function Dashboard() {
@@ -310,8 +309,9 @@ useEffect(() => {
                   </div>
                     {/* Logout Button */}
               <button
-                onClick={() => {
-                  localStorage.removeItem('token');
+                onClick={async () => {
+                  await logoutUser();
+                  clearAccessToken();
                   localStorage.removeItem('user');
                   navigate('/');
                 }}

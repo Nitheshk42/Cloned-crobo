@@ -651,3 +651,163 @@
 {"level":"info","message":"Balance fetched","timestamp":"2026-02-26T19:18:31.178Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
 {"count":0,"level":"info","message":"Recipients fetched","timestamp":"2026-02-26T19:18:31.184Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
 {"level":"info","message":"Balance fetched","timestamp":"2026-02-26T19:18:31.184Z","userId":"1b9f5a3c-468b-488c-aaae-fdd042f99468"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-27T04:22:55.864Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-27T04:22:55.881Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-27T04:30:41.467Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-27T04:30:41.480Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-27T04:31:32.776Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-27T04:31:32.789Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-27T04:32:33.664Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-27T04:32:33.677Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-27T04:33:37.448Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-27T04:33:37.463Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-27T04:33:54.741Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-27T04:33:54.755Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-27T04:53:19.051Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-27T04:53:19.065Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-27T04:54:20.246Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-27T04:54:20.260Z","url":"https://localhost:5001"}
+{"email":"john@email.com","level":"warn","message":"Login failed - wrong password","timestamp":"2026-02-27T18:10:13.084Z"}
+{"email":"john@email.com","level":"warn","message":"Login failed - wrong password","timestamp":"2026-02-27T18:10:14.335Z"}
+{"email":"john@email.com","level":"warn","message":"Login failed - wrong password","timestamp":"2026-02-27T18:10:22.739Z"}
+{"email":"test1@gmail.com","level":"warn","message":"Login failed - user not found","timestamp":"2026-02-27T18:10:33.136Z"}
+{"email":"test1@gmail.com","level":"warn","message":"Login failed - user not found","timestamp":"2026-02-27T18:10:39.204Z"}
+{"email":"test1@gmail.com","level":"warn","message":"Login failed - user not found","timestamp":"2026-02-27T18:10:42.750Z"}
+{"email":"test1@gmail.com","level":"warn","message":"Login failed - user not found","timestamp":"2026-02-27T18:10:43.617Z"}
+{"email":"test1@email.com","level":"warn","message":"Login failed - wrong password","timestamp":"2026-02-27T18:11:09.584Z"}
+{"email":"test1@email.com","level":"warn","message":"Login failed - wrong password","timestamp":"2026-02-27T18:11:10.504Z"}
+{"email":"test1@email.com","level":"info","message":"User logged in successfully","timestamp":"2026-02-27T18:11:15.897Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"error":"jwt malformed","level":"warn","message":"Invalid token","timestamp":"2026-02-27T18:11:15.945Z"}
+{"error":"jwt malformed","level":"warn","message":"Invalid token","timestamp":"2026-02-27T18:11:15.951Z"}
+{"error":"jwt malformed","level":"warn","message":"Invalid token","timestamp":"2026-02-27T18:11:15.952Z"}
+{"error":"jwt malformed","level":"warn","message":"Invalid token","timestamp":"2026-02-27T18:11:15.956Z"}
+{"error":"jwt malformed","level":"warn","message":"Invalid token","timestamp":"2026-02-27T18:11:15.958Z"}
+{"error":"jwt malformed","level":"warn","message":"Invalid token","timestamp":"2026-02-27T18:11:15.961Z"}
+{"email":"test1@email.com","level":"info","message":"User logged in successfully","timestamp":"2026-02-27T18:11:36.081Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"error":"jwt malformed","level":"warn","message":"Invalid token","timestamp":"2026-02-27T18:11:36.106Z"}
+{"error":"jwt malformed","level":"warn","message":"Invalid token","timestamp":"2026-02-27T18:11:36.109Z"}
+{"error":"jwt malformed","level":"warn","message":"Invalid token","timestamp":"2026-02-27T18:11:36.113Z"}
+{"error":"jwt malformed","level":"warn","message":"Invalid token","timestamp":"2026-02-27T18:11:36.114Z"}
+{"error":"jwt malformed","level":"warn","message":"Invalid token","timestamp":"2026-02-27T18:11:36.116Z"}
+{"error":"jwt malformed","level":"warn","message":"Invalid token","timestamp":"2026-02-27T18:11:36.121Z"}
+{"email":"test1@email.com","level":"info","message":"User logged in successfully","timestamp":"2026-02-27T18:12:08.083Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"error":"jwt malformed","level":"warn","message":"Invalid token","timestamp":"2026-02-27T18:12:08.112Z"}
+{"error":"jwt malformed","level":"warn","message":"Invalid token","timestamp":"2026-02-27T18:12:08.116Z"}
+{"error":"jwt malformed","level":"warn","message":"Invalid token","timestamp":"2026-02-27T18:12:08.116Z"}
+{"error":"jwt malformed","level":"warn","message":"Invalid token","timestamp":"2026-02-27T18:12:08.119Z"}
+{"error":"jwt malformed","level":"warn","message":"Invalid token","timestamp":"2026-02-27T18:12:08.121Z"}
+{"error":"jwt malformed","level":"warn","message":"Invalid token","timestamp":"2026-02-27T18:12:08.125Z"}
+{"email":"test1@email.com","level":"info","message":"User logged in successfully","timestamp":"2026-02-27T18:12:43.166Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"error":"jwt malformed","level":"warn","message":"Invalid token","timestamp":"2026-02-27T18:12:43.217Z"}
+{"error":"jwt malformed","level":"warn","message":"Invalid token","timestamp":"2026-02-27T18:12:43.218Z"}
+{"error":"jwt malformed","level":"warn","message":"Invalid token","timestamp":"2026-02-27T18:12:43.221Z"}
+{"error":"jwt malformed","level":"warn","message":"Invalid token","timestamp":"2026-02-27T18:12:43.222Z"}
+{"error":"jwt malformed","level":"warn","message":"Invalid token","timestamp":"2026-02-27T18:12:43.226Z"}
+{"error":"jwt malformed","level":"warn","message":"Invalid token","timestamp":"2026-02-27T18:12:43.227Z"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-27T19:43:10.046Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-27T19:43:10.061Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-27T19:46:32.275Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-27T19:46:32.291Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-27T19:47:44.582Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-27T19:47:44.597Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-27T19:52:10.156Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-27T19:52:10.171Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-27T19:58:29.372Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-27T19:58:29.387Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-27T19:58:55.797Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-27T19:58:55.811Z","url":"https://localhost:5001"}
+{"email":"test1@gmail.com","level":"warn","message":"Login failed - user not found","timestamp":"2026-02-27T19:59:15.926Z"}
+{"email":"test1@gmail.com","level":"warn","message":"Login failed - user not found","timestamp":"2026-02-27T19:59:18.456Z"}
+{"email":"test1@gmail.com","level":"warn","message":"Login failed - user not found","timestamp":"2026-02-27T19:59:20.684Z"}
+{"email":"test1@email.com","level":"info","message":"User logged in successfully","timestamp":"2026-02-27T19:59:25.858Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"email":"test1@gmail.com","level":"warn","message":"Login failed - user not found","timestamp":"2026-02-27T20:03:30.754Z"}
+{"email":"test1@email.com","level":"info","message":"User logged in successfully","timestamp":"2026-02-27T20:03:34.673Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"email":"test1@email.com","level":"info","message":"User logged in successfully","timestamp":"2026-02-27T20:05:30.189Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"email":"test1@email.com","level":"info","message":"User logged in successfully","timestamp":"2026-02-27T20:09:00.435Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"error":"jwt malformed","level":"warn","message":"Invalid token","timestamp":"2026-02-27T20:09:00.500Z"}
+{"error":"jwt malformed","level":"warn","message":"Invalid token","timestamp":"2026-02-27T20:09:00.505Z"}
+{"error":"jwt malformed","level":"warn","message":"Invalid token","timestamp":"2026-02-27T20:09:00.514Z"}
+{"error":"jwt malformed","level":"warn","message":"Invalid token","timestamp":"2026-02-27T20:09:00.519Z"}
+{"email":"test1@email.com","level":"info","message":"User logged in successfully","timestamp":"2026-02-27T20:09:14.714Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"error":"jwt malformed","level":"warn","message":"Invalid token","timestamp":"2026-02-27T20:09:14.786Z"}
+{"error":"jwt malformed","level":"warn","message":"Invalid token","timestamp":"2026-02-27T20:09:14.796Z"}
+{"error":"jwt malformed","level":"warn","message":"Invalid token","timestamp":"2026-02-27T20:09:14.804Z"}
+{"error":"jwt malformed","level":"warn","message":"Invalid token","timestamp":"2026-02-27T20:09:14.806Z"}
+{"email":"test1@email.com","level":"info","message":"User logged in successfully","timestamp":"2026-02-27T20:11:21.730Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-27T20:11:21.906Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":50}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-27T20:11:21.932Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-27T20:11:21.933Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":50}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-27T20:11:21.937Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-27T20:15:46.187Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-27T20:15:46.188Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":50}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-27T20:15:46.229Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-27T20:15:46.235Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":50}
+{"error":"jwt expired","level":"warn","message":"Invalid token","timestamp":"2026-02-27T23:40:46.004Z"}
+{"email":"test1@gmail.com","level":"warn","message":"Login failed - user not found","timestamp":"2026-02-27T23:42:07.728Z"}
+{"email":"test1@gmail.com","level":"warn","message":"Login failed - user not found","timestamp":"2026-02-27T23:42:11.369Z"}
+{"email":"test1@email.com","level":"info","message":"User logged in successfully","timestamp":"2026-02-27T23:42:15.789Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-27T23:42:15.873Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":50}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-27T23:42:15.880Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":50}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-27T23:42:15.882Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-27T23:42:15.883Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-27T23:45:43.116Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-27T23:45:43.117Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":50}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-27T23:45:43.121Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-27T23:45:43.123Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":50}
+{"level":"info","message":"User logged out","timestamp":"2026-02-27T23:46:01.570Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"email":"test1@email.com","level":"info","message":"User logged in successfully","timestamp":"2026-02-27T23:46:33.651Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-27T23:46:33.802Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":50}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-27T23:46:33.805Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":50}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-27T23:46:33.811Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-27T23:46:33.818Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-27T23:49:47.059Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-27T23:49:47.059Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":50}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-27T23:49:47.063Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-27T23:49:47.064Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":50}
+{"count":1,"deposits":2,"level":"info","message":"History fetched","timestamp":"2026-02-27T23:50:37.427Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"count":1,"deposits":2,"level":"info","message":"History fetched","timestamp":"2026-02-27T23:50:37.432Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-28T00:00:07.492Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-28T00:00:07.509Z","url":"https://localhost:5001"}
+{"count":1,"deposits":2,"level":"info","message":"History fetched","timestamp":"2026-02-28T00:00:29.211Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"count":1,"deposits":2,"level":"info","message":"History fetched","timestamp":"2026-02-28T00:00:29.228Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-28T00:00:38.757Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-28T00:00:38.762Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-28T00:00:38.789Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":50}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-28T00:00:38.794Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":50}
+{"level":"info","message":"User logged out","timestamp":"2026-02-28T00:00:40.702Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"email":"test1@email.com","level":"info","message":"User logged in successfully","timestamp":"2026-02-28T00:01:14.379Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-28T00:01:14.488Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":50}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-28T00:01:14.493Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":50}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-28T00:01:14.503Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-28T00:01:14.507Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"error":"jwt expired","level":"warn","message":"Invalid token","timestamp":"2026-02-28T00:02:38.035Z"}
+{"error":"jwt expired","level":"warn","message":"Invalid token","timestamp":"2026-02-28T00:02:38.041Z"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-28T00:12:34.767Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-28T00:12:34.783Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-28T00:12:42.159Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-28T00:12:42.174Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-28T00:12:44.650Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-28T00:12:44.667Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-28T00:14:57.055Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-28T00:14:57.070Z","url":"https://localhost:5001"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-28T00:17:00.776Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-28T00:17:00.791Z","url":"https://localhost:5001"}
+{"email":"test1@email.com","level":"info","message":"User logged in successfully","timestamp":"2026-02-28T00:17:34.301Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-28T00:17:34.376Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":50}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-28T00:17:34.380Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":50}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-28T00:17:34.385Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-28T00:17:34.387Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"error":"jwt expired","level":"warn","message":"Invalid token","timestamp":"2026-02-28T00:18:34.282Z"}
+{"error":"jwt expired","level":"warn","message":"Invalid token","timestamp":"2026-02-28T00:18:34.286Z"}
+{"email":"test1@email.com","level":"info","message":"User logged in successfully","timestamp":"2026-02-28T00:20:32.115Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-28T00:20:32.193Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-28T00:20:32.195Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-28T00:20:32.196Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":50}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-28T00:20:32.199Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":50}
+{"error":"jwt expired","level":"warn","message":"Invalid token","timestamp":"2026-02-28T00:21:23.820Z"}
+{"error":"jwt expired","level":"warn","message":"Invalid token","timestamp":"2026-02-28T00:21:23.825Z"}
+{"level":"info","message":"Access token refreshed","timestamp":"2026-02-28T00:21:23.874Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"count":1,"deposits":2,"level":"info","message":"History fetched","timestamp":"2026-02-28T00:21:23.910Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"count":1,"deposits":2,"level":"info","message":"History fetched","timestamp":"2026-02-28T00:21:23.914Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-28T00:23:15.394Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-28T00:23:15.409Z","url":"https://localhost:5001"}

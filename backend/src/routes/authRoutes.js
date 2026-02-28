@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { register, login, logout, googleAuth } = require('../controllers/authController');
+const { register, login, logout, refresh, googleAuth } = require('../controllers/authController');
 const { protect } = require('../middleware/authMiddleware');
 
 /**
@@ -76,6 +76,19 @@ router.post('/login', login);
  */
 router.post('/logout', protect, logout);
 
+/**
+ * @swagger
+ * /api/auth/refresh:
+ *   post:
+ *     summary: Get new access token using refresh token cookie
+ *     tags: [Auth]
+ *     responses:
+ *       200:
+ *         description: New access token generated
+ *       401:
+ *         description: Invalid or expired refresh token
+ */
+router.post('/refresh', refresh);
 /**
  * @swagger
  * /api/auth/google:

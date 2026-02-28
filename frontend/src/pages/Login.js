@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import { loginUser, googleAuth } from '../services/api';
+import { setAccessToken } from '../services/api';  
 
 const WorldMapBackground = () => (
   <div style={{ position: 'fixed', inset: 0, zIndex: 0, overflow: 'hidden' }}>
@@ -86,8 +87,10 @@ function Login() {
     try {
       setError(''); setLoading(true);
       const response = await loginUser({email, password});
-      const {token, user} = response.data;
-      localStorage.setItem('token', token);
+      console.log('Login response:', response.data);
+      const {accessToken, user} = response.data;
+      setAccessToken(accessToken);
+      localStorage.removeItem('token');       // ← clear old token if exists
       localStorage.setItem('user', JSON.stringify(user));
       navigate('/dashboard');
     } catch (err) {
@@ -383,8 +386,8 @@ function Login() {
                       onSuccess={async(credentialResponse)=>{
                         try {
                           const response = await googleAuth({credential:credentialResponse.credential});
-                          const {token,user} = response.data;
-                          localStorage.setItem('token',token);
+                          const {accesstoken,user} = response.data;
+                          setAccessToken(accesstoken);
                           localStorage.setItem('user',JSON.stringify(user));
                           navigate('/dashboard');
                         } catch(err){

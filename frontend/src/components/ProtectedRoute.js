@@ -1,9 +1,14 @@
 import { Navigate } from 'react-router-dom';
+import { getAccessToken } from '../services/api';
 
 function ProtectedRoute({ children }) {
-  const token = localStorage.getItem('token');
+  const user = localStorage.getItem('user');
+  const accessToken = getAccessToken();
 
-  if (!token) {
+  console.log('ProtectedRoute check:', { user, accessToken }); // ← debug
+
+  // If no user info OR no access token → redirect to login
+  if (!user || !accessToken) {
     return <Navigate to="/" replace />;
   }
 
