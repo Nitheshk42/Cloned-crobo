@@ -859,3 +859,10 @@
 {"email":"test@email.com","level":"warn","message":"Register failed - missing fields","timestamp":"2026-02-28T01:01:51.581Z"}
 {"email":"john@email.com","level":"warn","message":"Login failed - wrong password","timestamp":"2026-02-28T01:01:51.639Z"}
 {"email":"john@email.com","level":"info","message":"User logged in successfully","timestamp":"2026-02-28T01:01:51.698Z","userId":"c36bb34f-bcfe-4741-8fa0-32dc3b0e5183"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-28T01:35:58.035Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-28T01:35:58.050Z","url":"https://localhost:5001"}
+{"error":"invalid signature","level":"warn","message":"Invalid token","timestamp":"2026-02-28T01:36:00.802Z"}
+{"error":"invalid signature","level":"warn","message":"Invalid token","timestamp":"2026-02-28T01:36:00.808Z"}
+{"error":"invalid signature","level":"warn","message":"Invalid token","timestamp":"2026-02-28T01:36:00.856Z"}
+{"error":"invalid signature","level":"warn","message":"Invalid token","timestamp":"2026-02-28T01:36:00.861Z"}
+{"error":"invalid signature","level":"error","message":"Refresh token error","timestamp":"2026-02-28T01:36:00.890Z"}

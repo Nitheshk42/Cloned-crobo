@@ -208,7 +208,7 @@ function AddMoneyModal({ onClose, onSuccess }) {
                   onClick={() => setAmount(q.toString())}
                   style={{
                     padding: '8px 16px',
-                    background: amount == q ? '#0f4c81' : '#f0f7ff',
+                    background: amount === q ? '#0f4c81' : '#f0f7ff',
                     color: amount == q ? 'white' : '#0f4c81',
                     border: 'none', borderRadius: '50px',
                     fontWeight: '600', fontSize: '13px',

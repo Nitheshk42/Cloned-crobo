@@ -53,8 +53,14 @@ const WorldMapBackground = () => (
 );
 
 const currencies = [
-  {code:'INR',flag:'🇮🇳'},{code:'GBP',flag:'🇬🇧'},{code:'EUR',flag:'🇪🇺'},
-  {code:'AUD',flag:'🇦🇺'},{code:'CAD',flag:'🇨🇦'},{code:'SGD',flag:'🇸🇬'},{code:'AED',flag:'🇦🇪'},
+  {code:'USD', flag:'🇺🇸'},
+  {code:'INR', flag:'🇮🇳'},
+  {code:'GBP', flag:'🇬🇧'},
+  {code:'EUR', flag:'🇪🇺'},
+  {code:'AUD', flag:'🇦🇺'},
+  {code:'CAD', flag:'🇨🇦'},
+  {code:'SGD', flag:'🇸🇬'},
+  {code:'AED', flag:'🇦🇪'},
 ];
 
 function Login() {
@@ -66,15 +72,17 @@ function Login() {
   const [loading, setLoading] = useState(false);
   const [amount, setAmount] = useState('1000');
   const [selectedCurrency, setSelectedCurrency] = useState(currencies[0]);
+  const [ swapped, setSwapped ] = useState(false);
+  const [fromCurrency, setFromCurrency ] = useState({code:'USD', flag:'🇺🇸'});
   const [rates, setRates] = useState({});
   const [ratesLoading, setRatesLoading] = useState(true);
 
   useEffect(() => {
     const fetchRates = async () => {
       try {
-        const res = await fetch('https://api.frankfurter.app/latest?from=USD&to=GBP,EUR,INR,AUD,CAD,SGD,AED');
+        const res = await fetch('https://api.frankfurter.app/latest?from=USD&to=GBP,EUR,INR,AUD,CAD,SGD,AED,USD');
         const data = await res.json();
-        setRates(data.rates);
+        setRates({...data.rates, USD: 1});
       } catch {
         setRates({INR:83.12,GBP:0.79,EUR:0.92,AUD:1.53,CAD:1.36,SGD:1.34,AED:3.67});
       }
@@ -100,11 +108,21 @@ function Login() {
     }
   };
 
-  const recipientGets = rates[selectedCurrency.code]
-    ? ((parseFloat(amount)||0) * rates[selectedCurrency.code] - 0.99).toFixed(2)
-    : '...';
-  const exchangeRate = rates[selectedCurrency.code]
-    ? rates[selectedCurrency.code].toFixed(4) : '...';
+const fromRate = fromCurrency.code === 'USD' 
+  ? 1 
+  : (rates[fromCurrency.code] ? 1 / rates[fromCurrency.code] : 1);
+
+const toRate = selectedCurrency.code === 'USD'
+  ? 1
+  : (rates[selectedCurrency.code] || 1);
+
+const crossRate = fromRate * toRate;
+
+const recipientGets = rates[selectedCurrency.code]
+  ? ((parseFloat(amount) || 0) * crossRate - 0.99).toFixed(2)
+  : '...';
+
+const exchangeRate = crossRate ? crossRate.toFixed(4) : '...';
 
   const inputStyle = {
     width:'100%', padding:'13px 16px', border:'2px solid #ebebeb',
@@ -247,20 +265,71 @@ function Login() {
                   <div>
                     <p style={{color:'rgba(255,255,255,0.35)', fontSize:'10px', fontWeight:'700', textTransform:'uppercase', letterSpacing:'1.5px', margin:0}}>You Send</p>
                     <div style={{display:'flex', alignItems:'center', gap:'10px', marginTop:'8px'}}>
-                      <span style={{fontSize:'24px'}}>🇺🇸</span>
+                      <span style={{ fontSize: '24px' }}>{swapped ? selectedCurrency.flag : fromCurrency.flag}</span>
                       <input type="number" value={amount} onChange={e=>setAmount(e.target.value)}
                         style={{background:'none', border:'none', outline:'none', color:'white', fontSize:'36px', fontWeight:'900', width:'150px', fontFamily:'Sora, sans-serif'}}
                       />
-                      <span style={{color:'rgba(255,255,255,0.35)', fontWeight:'700', fontSize:'15px'}}>USD</span>
+                      {swapped ? (
+                        <span style={{ color: 'rgba(255,255,255,0.35)', fontWeight: '700', fontSize: '15px' }}>
+                          {selectedCurrency.code}
+                        </span>
+                      ) : (
+                        <select
+                          value={fromCurrency.code}
+                          onChange={e => setFromCurrency(
+                            e.target.value === 'USD'
+                              ? {code:'USD', flag:'🇺🇸'}
+                              : currencies.find(c => c.code === e.target.value)
+                          )}
+                          style={{
+                            background:'none', border:'none', outline:'none',
+                            color:'rgba(255,255,255,0.6)', fontWeight:'700',
+                            fontSize:'15px', fontFamily:'Sora, sans-serif',
+                            cursor:'pointer'
+                          }}
+                        >
+                          <option value="USD" style={{background:'#0f2d4a'}}>🇺🇸 USD</option>
+                          {currencies.map(c => (
+                            <option key={c.code} value={c.code} style={{background:'#0f2d4a'}}>{c.flag} {c.code}</option>
+                          ))}
+                        </select>
+                      )}
                     </div>
-                  </div>
-                  <div style={{background:'rgba(78,205,196,0.1)', border:'1px solid rgba(78,205,196,0.2)', borderRadius:'14px', padding:'12px 18px', textAlign:'right'}}>
-                    <p style={{color:'rgba(255,255,255,0.4)', fontSize:'10px', margin:0, textTransform:'uppercase', letterSpacing:'1px'}}>Fee</p>
-                    <p style={{color:'#4ecdc4', fontWeight:'900', fontSize:'22px', margin:'4px 0 0'}}>$0.99</p>
                   </div>
                 </div>
 
-                <div style={{textAlign:'center', margin:'8px 0', fontSize:'22px', opacity:0.5}}>⬇️</div>
+                <div style={{ display:'flex', alignItems:'center', justifyContent:'center', margin:'8px 0', gap:'8px' }}>
+                  <div
+                    onClick={() => {
+                        setSwapped(!swapped);
+                        const temp = fromCurrency;
+                        setFromCurrency(swapped ? temp : selectedCurrency);
+                        setSelectedCurrency(swapped ? selectedCurrency : temp);
+                      }}
+                    style={{
+                      display:'inline-flex', alignItems:'center', gap:'8px',
+                      background:'rgba(78,205,196,0.1)',
+                      border:'1px solid rgba(78,205,196,0.3)',
+                      borderRadius:'50px', padding:'6px 16px',
+                      cursor:'pointer', userSelect:'none',
+                      transition:'all 0.3s',
+                      boxShadow:'0 0 12px rgba(78,205,196,0.3)',
+                      animation:'swapPulse 2s ease-in-out infinite'
+                    }}
+                    onMouseOver={e => e.currentTarget.style.boxShadow='0 0 24px rgba(78,205,196,0.6)'}
+                    onMouseOut={e => e.currentTarget.style.boxShadow='0 0 12px rgba(78,205,196,0.3)'}
+                  >
+                    <span style={{
+                      color:'#4ecdc4', fontSize:'18px',
+                      display:'inline-block',
+                      transition:'transform 0.3s',
+                      transform: swapped ? 'rotate(180deg)' : 'rotate(0deg)'
+                    }}>⇅</span>
+                    <span style={{ color:'#4ecdc4', fontSize:'12px', fontWeight:'700', letterSpacing:'1px', textTransform:'uppercase' }}>
+                      Swap
+                    </span>
+                  </div>
+                </div>
 
                 {/* They Receive */}
                 <div style={{
@@ -275,18 +344,26 @@ function Login() {
                       {ratesLoading ? '...' : recipientGets}
                     </p>
                   </div>
-                  <select value={selectedCurrency.code}
-                    onChange={e=>setSelectedCurrency(currencies.find(c=>c.code===e.target.value))}
-                    style={{background:'rgba(255,255,255,0.1)', border:'1px solid rgba(255,255,255,0.15)', borderRadius:'14px', padding:'12px 16px', color:'white', fontSize:'18px', fontWeight:'700', fontFamily:'Sora, sans-serif', cursor:'pointer', outline:'none'}}
-                  >
-                    {currencies.map(c=>(
-                      <option key={c.code} value={c.code} style={{background:'#0f2d4a'}}>{c.flag} {c.code}</option>
-                    ))}
-                  </select>
+                  {swapped ? (
+                    <div style={{background:'rgba(255,255,255,0.1)', border:'1px solid rgba(255,255,255,0.15)', borderRadius:'14px', padding:'12px 16px', color:'white', fontSize:'18px', fontWeight:'700'}}>
+                      🇺🇸 USD
+                    </div>
+                  ) : (
+                    <select value={selectedCurrency.code}
+                      onChange={e=>setSelectedCurrency(currencies.find(c=>c.code===e.target.value))}
+                      style={{background:'rgba(255,255,255,0.1)', border:'1px solid rgba(255,255,255,0.15)', borderRadius:'14px', padding:'12px 16px', color:'white', fontSize:'18px', fontWeight:'700', fontFamily:'Sora, sans-serif', cursor:'pointer', outline:'none'}}
+                    >
+                      {currencies.map(c=>(
+                        <option key={c.code} value={c.code} style={{background:'#0f2d4a'}}>{c.flag} {c.code}</option>
+                      ))}
+                    </select>
+                  )}
                 </div>
 
                 <div style={{display:'flex', justifyContent:'space-between', alignItems:'center', marginBottom:'20px'}}>
-                  <p style={{color:'rgba(255,255,255,0.3)', fontSize:'13px', margin:0}}>1 USD = {exchangeRate} {selectedCurrency.code}</p>
+                 <p style={{ color: 'rgba(255,255,255,0.3)', fontSize: '13px', margin: 0 }}>
+                    1 {swapped ? selectedCurrency.code : fromCurrency.code} = {exchangeRate} {swapped ? fromCurrency.code : selectedCurrency.code}
+                  </p>
                   <p style={{color:'#4ecdc4', fontSize:'13px', fontWeight:'700', margin:0}}>✅ Best rate guaranteed</p>
                 </div>
 
