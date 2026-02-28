@@ -30,25 +30,21 @@ describe('Unit Tests — Auth', () => {
   });
 
   // Test 3: JWT token creation
-  test('should create a valid JWT token', () => {
-    const payload = { userId: '123', email: 'test@email.com' };
-    const token = jwt.sign(payload, process.env.JWT_SECRET, { expiresIn: '7d' });
+test('should create a valid JWT token', () => {
+  const payload = { userId: '123', email: 'test@email.com' };
+  const token = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '15m' });
+  expect(token).toBeDefined();
+  const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
+  expect(decoded.userId).toBe('123');
+  expect(decoded.email).toBe('test@email.com');
+});
 
-    // Token should exist
-    expect(token).toBeDefined();
-
-    // Token should be verifiable
-    const decoded = jwt.verify(token, process.env.JWT_SECRET);
-    expect(decoded.userId).toBe('123');
-    expect(decoded.email).toBe('test@email.com');
-  });
-
-  // Test 4: Invalid JWT token should fail
-  test('should reject invalid JWT token', () => {
-    expect(() => {
-      jwt.verify('invalidtoken', process.env.JWT_SECRET);
-    }).toThrow();
-  });
+// Test 4: Invalid JWT token should fail
+test('should reject invalid JWT token', () => {
+  expect(() => {
+    jwt.verify('invalidtoken', process.env.ACCESS_TOKEN_SECRET);
+  }).toThrow();
+});
 
 });
 
