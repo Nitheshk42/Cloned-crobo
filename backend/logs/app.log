@@ -819,3 +819,43 @@
 {"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-28T00:36:40.186Z","url":"https://localhost:5001"}
 {"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-28T00:36:47.254Z"}
 {"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-28T00:36:47.268Z","url":"https://localhost:5001"}
+{"email":"testuser_1772239350303@email.com","level":"info","message":"New user registered","timestamp":"2026-02-28T00:42:30.477Z","userId":"d4fc57d9-bc50-4d23-9c0c-e077d7f8b1e8"}
+{"email":"test@email.com","level":"warn","message":"Register failed - missing fields","timestamp":"2026-02-28T00:42:30.481Z"}
+{"email":"john@email.com","level":"warn","message":"Login failed - wrong password","timestamp":"2026-02-28T00:42:30.485Z"}
+{"email":"john@email.com","level":"warn","message":"Login failed - wrong password","timestamp":"2026-02-28T00:42:30.486Z"}
+{"email":"testuser_1772239517409@email.com","level":"info","message":"New user registered","timestamp":"2026-02-28T00:45:17.580Z","userId":"de87e1cb-6c03-47be-adb2-a783a051f504"}
+{"email":"test@email.com","level":"warn","message":"Register failed - missing fields","timestamp":"2026-02-28T00:45:17.585Z"}
+{"email":"john@email.com","level":"warn","message":"Login failed - wrong password","timestamp":"2026-02-28T00:45:17.588Z"}
+{"email":"john@email.com","level":"warn","message":"Login failed - wrong password","timestamp":"2026-02-28T00:45:17.590Z"}
+{"email":"testuser_1772239584712@email.com","level":"info","message":"New user registered","timestamp":"2026-02-28T00:46:24.872Z","userId":"cc0a29dc-d60e-4029-9406-db75b8afcc9e"}
+{"email":"test@email.com","level":"warn","message":"Register failed - missing fields","timestamp":"2026-02-28T00:46:24.876Z"}
+{"email":"john@email.com","level":"warn","message":"Login failed - wrong password","timestamp":"2026-02-28T00:46:24.879Z"}
+{"email":"john@email.com","level":"warn","message":"Login failed - wrong password","timestamp":"2026-02-28T00:46:24.881Z"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-28T00:47:50.382Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-28T00:47:50.396Z","url":"https://localhost:5001"}
+{"email":"john@email.com","level":"warn","message":"Login failed - wrong password","timestamp":"2026-02-28T00:47:58.241Z"}
+{"email":"testuser_1772239887557@email.com","level":"info","message":"New user registered","timestamp":"2026-02-28T00:51:27.730Z","userId":"18dea690-4942-4949-9497-d661ac288091"}
+{"email":"test@email.com","level":"warn","message":"Register failed - missing fields","timestamp":"2026-02-28T00:51:27.735Z"}
+{"email":"john@email.com","level":"warn","message":"Login failed - wrong password","timestamp":"2026-02-28T00:51:27.791Z"}
+{"email":"john@email.com","level":"info","message":"User logged in successfully","timestamp":"2026-02-28T00:51:27.848Z","userId":"3d639f83-625e-4dfb-bc1f-65f9a585f8eb"}
+{"email":"testuser_1772240124397@email.com","level":"info","message":"New user registered","timestamp":"2026-02-28T00:55:24.512Z","userId":"dd0c0d76-ed00-4a60-9b35-1e0631a1bde2"}
+{"email":"test@email.com","level":"warn","message":"Register failed - missing fields","timestamp":"2026-02-28T00:55:24.519Z"}
+{"email":"john@email.com","level":"warn","message":"Login failed - wrong password","timestamp":"2026-02-28T00:55:24.577Z"}
+{"email":"john@email.com","level":"info","message":"User logged in successfully","timestamp":"2026-02-28T00:55:24.636Z","userId":"3d639f83-625e-4dfb-bc1f-65f9a585f8eb"}
+{"email":"testuser_1772240280701@email.com","level":"info","message":"New user registered","timestamp":"2026-02-28T00:58:00.811Z","userId":"25f736ca-bab1-4ba6-be21-7e6e45c21363"}
+{"email":"test@email.com","level":"warn","message":"Register failed - missing fields","timestamp":"2026-02-28T00:58:00.816Z"}
+{"email":"john@email.com","level":"warn","message":"Login failed - wrong password","timestamp":"2026-02-28T00:58:00.873Z"}
+{"email":"john@email.com","level":"info","message":"User logged in successfully","timestamp":"2026-02-28T00:58:00.931Z","userId":"3d639f83-625e-4dfb-bc1f-65f9a585f8eb"}
+{"email":"testuser_1772240294609@email.com","level":"info","message":"New user registered","timestamp":"2026-02-28T00:58:14.711Z","userId":"61241f9e-e721-4294-aa89-fbf063f09422"}
+{"email":"test@email.com","level":"warn","message":"Register failed - missing fields","timestamp":"2026-02-28T00:58:14.715Z"}
+{"email":"john@email.com","level":"warn","message":"Login failed - wrong password","timestamp":"2026-02-28T00:58:14.772Z"}
+{"email":"john@email.com","level":"info","message":"User logged in successfully","timestamp":"2026-02-28T00:58:14.831Z","userId":"3d639f83-625e-4dfb-bc1f-65f9a585f8eb"}
+{"email":"john@email.com","level":"info","message":"User logged in successfully","timestamp":"2026-02-28T01:01:51.100Z","userId":"c36bb34f-bcfe-4741-8fa0-32dc3b0e5183"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-28T01:01:51.132Z","userId":"c36bb34f-bcfe-4741-8fa0-32dc3b0e5183"}
+{"amountSent":100,"country":"India","currency":"INR","level":"info","message":"Transfer successful","timestamp":"2026-02-28T01:01:51.145Z","transactionId":"b2692142-a827-450b-a249-77061283e0b8","userId":"c36bb34f-bcfe-4741-8fa0-32dc3b0e5183"}
+{"level":"warn","message":"No token provided","timestamp":"2026-02-28T01:01:51.148Z"}
+{"amountSent":99999,"level":"warn","message":"Transfer failed - insufficient balance","timestamp":"2026-02-28T01:01:51.152Z","userId":"c36bb34f-bcfe-4741-8fa0-32dc3b0e5183"}
+{"email":"testuser_1772240511481@email.com","level":"info","message":"New user registered","timestamp":"2026-02-28T01:01:51.579Z","userId":"96913a91-9411-4c31-bfd8-c297a844e2d4"}
+{"email":"test@email.com","level":"warn","message":"Register failed - missing fields","timestamp":"2026-02-28T01:01:51.581Z"}
+{"email":"john@email.com","level":"warn","message":"Login failed - wrong password","timestamp":"2026-02-28T01:01:51.639Z"}
+{"email":"john@email.com","level":"info","message":"User logged in successfully","timestamp":"2026-02-28T01:01:51.698Z","userId":"c36bb34f-bcfe-4741-8fa0-32dc3b0e5183"}

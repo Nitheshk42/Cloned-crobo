@@ -16,10 +16,18 @@ beforeAll(async () => {
   const bcrypt = require('bcryptjs');
   const hashedPassword = await bcrypt.hash('password123', 10);
   
-  // Delete existing test user if exists
+  // Delete existing test user and their transactions if exists
+const existingUser = await prisma.user.findUnique({
+  where: { email: 'john@email.com' }
+});
+if (existingUser) {
+  await prisma.transaction.deleteMany({
+    where: { userId: existingUser.id }
+  });
   await prisma.user.deleteMany({
     where: { email: 'john@email.com' }
   });
+}
 
   // Create fresh test user
   const user = await prisma.user.create({
@@ -39,7 +47,7 @@ beforeAll(async () => {
       password: 'password123'
     });
 
-  token = response.body.token;
+  token = response.body.accessToken;
   userId = user.id;
 });
 
@@ -116,7 +124,7 @@ describe('Integration Tests — Transfer API', () => {
       });
 
     expect(response.status).toBe(401);
-    expect(response.body.message).toBe('No token! Please login first.');
+    expect(response.body.message).toBe('No token provided!');
   });
 
   // Test 7: Send money with insufficient balance
