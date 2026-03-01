@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { getRecipients, deleteRecipient } from '../services/api';
 import AddRecipientModal from '../components/AddRecipientModal';
 
+const transferIcon = { 'Myself':'🙋', 'My Family':'👨‍👩‍👧', 'Someone Else':'👤' };
+
 function Recipients() {
   const navigate = useNavigate();
   const [recipients, setRecipients] = useState([]);
@@ -15,10 +17,9 @@ function Recipients() {
       try {
         const response = await getRecipients();
         setRecipients(response.data.recipients);
-        setLoading(false);
       } catch (error) {
-        console.log('Error fetching recipients:', error);
         if (error.response?.status === 401) navigate('/');
+      } finally {
         setLoading(false);
       }
     };
@@ -31,224 +32,138 @@ function Recipients() {
     try {
       await deleteRecipient(id);
       setRecipients(prev => prev.filter(r => r.id !== id));
-    } catch (error) {
+    } catch {
       alert('Something went wrong!');
     }
     setDeletingId(null);
   };
 
-  const transferIcon = {
-    'Myself': '🙋',
-    'My Family': '👨‍👩‍👧',
-    'Someone Else': '👤'
-  };
-
   return (
-    <div style={{ background: '#f7f8fc', minHeight: '100vh' }}>
+    <div className="min-h-screen" style={{background:'#f7f8fc', fontFamily:"'Sora', sans-serif"}}>
 
-      {/* Header */}
-      <div style={{
-        background: 'linear-gradient(135deg, #0f4c81 0%, #1a7a6e 100%)',
-        padding: '24px 32px',
-      }}>
-        <div style={{ maxWidth: '700px', margin: '0 auto', display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <button
-            onClick={() => navigate('/dashboard')}
-            style={{
-              background: 'rgba(255,255,255,0.15)', border: 'none',
-              borderRadius: '12px', padding: '8px 14px',
-              color: 'white', cursor: 'pointer', fontSize: '18px'
-            }}
-          >←</button>
+      {/* ── HEADER ── */}
+      <div style={{background:'linear-gradient(135deg, #0f4c81 0%, #1a7a6e 100%)'}}>
+        <div className="max-w-2xl mx-auto px-5 md:px-8 py-5 flex items-center gap-4">
+          <button onClick={() => navigate('/dashboard')}
+            className="rounded-xl px-3 py-2 text-white text-lg border-none cursor-pointer hover:bg-white/25 transition-all"
+            style={{background:'rgba(255,255,255,0.15)'}}>←</button>
           <div>
-            <h1 style={{ color: 'white', fontWeight: '800', fontSize: '22px', margin: 0 }}>
-              👥 Manage Recipients
-            </h1>
-            <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '13px', margin: 0 }}>
+            <h1 className="text-white font-extrabold text-xl m-0">👥 Manage Recipients</h1>
+            <p className="text-sm m-0" style={{color:'rgba(255,255,255,0.7)'}}>
               {recipients.length} saved recipient{recipients.length !== 1 ? 's' : ''}
             </p>
           </div>
         </div>
       </div>
 
-      <div style={{ maxWidth: '700px', margin: '32px auto', padding: '0 24px' }}>
+      <div className="max-w-2xl mx-auto px-5 md:px-8 py-6 md:py-8">
 
-        {/* Loading */}
+        {/* ── LOADING ── */}
         {loading && (
-          <div style={{ textAlign: 'center', padding: '60px 0' }}>
-            <p style={{ color: '#aaa', fontSize: '14px' }}>Loading recipients...</p>
+          <div className="text-center py-16">
+            <p className="text-sm" style={{color:'#aaa'}}>Loading recipients...</p>
           </div>
         )}
 
-        {/* Empty State */}
+        {/* ── EMPTY STATE ── */}
         {!loading && recipients.length === 0 && (
-          <div style={{
-            background: 'white', borderRadius: '24px',
-            padding: '60px 32px', textAlign: 'center',
-            boxShadow: '0 4px 20px rgba(0,0,0,0.06)'
-          }}>
-            <p style={{ fontSize: '48px', marginBottom: '16px' }}>👥</p>
-            <p style={{ fontWeight: '700', fontSize: '18px', color: '#1a1a2e' }}>No recipients yet!</p>
-            <p style={{ color: '#888', fontSize: '14px', marginTop: '8px' }}>
-              Add recipients from the dashboard
-            </p>
-            <button
-              onClick={() => navigate('/dashboard')}
-              style={{
-                marginTop: '24px', padding: '14px 32px',
-                background: 'linear-gradient(135deg, #0f4c81, #1a7a6e)',
-                color: 'white', border: 'none', borderRadius: '14px',
-                fontWeight: '700', fontSize: '14px',
-                cursor: 'pointer', fontFamily: 'Sora, sans-serif'
-              }}
-            >
+          <div className="bg-white rounded-3xl py-16 px-8 text-center" style={{boxShadow:'0 4px 20px rgba(0,0,0,0.06)'}}>
+            <p className="text-5xl mb-4">👥</p>
+            <p className="font-bold text-lg m-0" style={{color:'#1a1a2e'}}>No recipients yet!</p>
+            <p className="text-sm mt-2 m-0" style={{color:'#888'}}>Add recipients from the dashboard</p>
+            <button onClick={() => navigate('/dashboard')}
+              className="mt-6 px-8 py-3.5 text-white font-bold text-sm border-none rounded-2xl cursor-pointer transition-all hover:-translate-y-0.5"
+              style={{background:'linear-gradient(135deg, #0f4c81, #1a7a6e)', fontFamily:"'Sora', sans-serif"}}>
               ← Go to Dashboard
             </button>
           </div>
         )}
 
-        {/* Recipients List */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+        {/* ── RECIPIENTS LIST ── */}
+        <div className="flex flex-col gap-4">
           {recipients.map(r => (
-            <div
-              key={r.id}
-              style={{
-                background: 'white', borderRadius: '20px',
-                padding: '22px 24px', boxShadow: '0 4px 20px rgba(0,0,0,0.06)',
-                transition: 'transform 0.2s',
-                borderLeft: '4px solid #0f4c81'
-              }}
-              onMouseOver={e => e.currentTarget.style.transform = 'translateY(-2px)'}
-              onMouseOut={e => e.currentTarget.style.transform = 'translateY(0)'}
-            >
+            <div key={r.id}
+              className="bg-white rounded-2xl p-5 md:p-6 transition-all duration-200 hover:-translate-y-0.5"
+              style={{boxShadow:'0 4px 20px rgba(0,0,0,0.06)', borderLeft:'4px solid #0f4c81'}}>
+
               {/* Top Row */}
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+              <div className="flex justify-between items-start gap-3">
+                <div className="flex items-center gap-3">
                   {/* Avatar */}
-                  <div style={{
-                    width: '48px', height: '48px',
-                    background: 'linear-gradient(135deg, #0f4c81, #1a7a6e)',
-                    borderRadius: '50%', display: 'flex',
-                    alignItems: 'center', justifyContent: 'center',
-                    color: 'white', fontWeight: '700', fontSize: '18px',
-                    flexShrink: 0
-                  }}>
+                  <div className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-lg flex-shrink-0"
+                    style={{background:'linear-gradient(135deg, #0f4c81, #1a7a6e)'}}>
                     {r.fullName.charAt(0).toUpperCase()}
                   </div>
                   <div>
-                    <p style={{ fontWeight: '700', fontSize: '16px', color: '#1a1a2e', margin: 0 }}>
-                      {r.fullName}
-                    </p>
-                    <p style={{ fontSize: '12px', color: '#888', margin: '3px 0 0' }}>
+                    <p className="font-bold text-base m-0" style={{color:'#1a1a2e'}}>{r.fullName}</p>
+                    <p className="text-xs m-0 mt-0.5" style={{color:'#888'}}>
                       {transferIcon[r.transferringTo] || '👤'} {r.transferringTo} · {r.country}
                     </p>
                   </div>
                 </div>
 
                 {/* Action Buttons */}
-                <div style={{ display: 'flex', gap: '8px' }}>
-                  <button
-                    onClick={() => navigate('/send', { state: { recipient: r } })}
-                    style={{
-                      background: 'linear-gradient(135deg, #0f4c81, #1a7a6e)',
-                      color: 'white', border: 'none',
-                      borderRadius: '10px', padding: '8px 14px',
-                      fontWeight: '600', fontSize: '12px',
-                      cursor: 'pointer', fontFamily: 'Sora, sans-serif'
-                    }}
-                  >
+                <div className="flex gap-2 flex-shrink-0">
+                  <button onClick={() => navigate('/send', { state: { recipient: r } })}
+                    className="text-white font-semibold text-xs px-3 py-2 rounded-xl border-none cursor-pointer"
+                    style={{background:'linear-gradient(135deg, #0f4c81, #1a7a6e)', fontFamily:"'Sora', sans-serif"}}>
                     💸 Send
                   </button>
-                  <button
-                    onClick={() => setEditRecipient(r)}
-                    style={{
-                    background: '#f0f7ff', color: '#0f4c81',
-                    border: 'none', borderRadius: '10px',
-                    padding: '8px 14px', fontWeight: '600',
-                    fontSize: '12px', cursor: 'pointer',
-                    fontFamily: 'Sora, sans-serif'
-                    }}
-                >
+                  <button onClick={() => setEditRecipient(r)}
+                    className="font-semibold text-xs px-3 py-2 rounded-xl border-none cursor-pointer"
+                    style={{background:'#f0f7ff', color:'#0f4c81', fontFamily:"'Sora', sans-serif"}}>
                     ✏️ Edit
-                </button>
-                  <button
-                    onClick={() => handleDelete(r.id, r.fullName)}
-                    disabled={deletingId === r.id}
-                    style={{
-                      background: '#fff0f0', color: '#e74c3c',
-                      border: 'none', borderRadius: '10px',
-                      padding: '8px 14px', fontWeight: '600',
-                      fontSize: '12px', cursor: 'pointer',
-                      fontFamily: 'Sora, sans-serif'
-                    }}
-                  >
+                  </button>
+                  <button onClick={() => handleDelete(r.id, r.fullName)} disabled={deletingId === r.id}
+                    className="font-semibold text-xs px-3 py-2 rounded-xl border-none cursor-pointer"
+                    style={{background:'#fff0f0', color:'#e74c3c', fontFamily:"'Sora', sans-serif"}}>
                     {deletingId === r.id ? '...' : '🗑️'}
                   </button>
                 </div>
               </div>
 
-              {/* Details Row */}
-              <div style={{
-                display: 'grid', gridTemplateColumns: '1fr 1fr',
-                gap: '10px', marginTop: '16px',
-                background: '#f7f8fc', borderRadius: '12px',
-                padding: '12px 16px'
-              }}>
-                <div>
-                  <p style={{ fontSize: '11px', color: '#aaa', fontWeight: '600', textTransform: 'uppercase', margin: 0 }}>Bank Account</p>
-                  <p style={{ fontSize: '13px', color: '#1a1a2e', fontWeight: '600', margin: '3px 0 0' }}>{r.bankAccount}</p>
-                </div>
-                <div>
-                  <p style={{ fontSize: '11px', color: '#aaa', fontWeight: '600', textTransform: 'uppercase', margin: 0 }}>IFSC Code</p>
-                  <p style={{ fontSize: '13px', color: '#1a1a2e', fontWeight: '600', margin: '3px 0 0' }}>{r.ifscCode}</p>
-                </div>
-                <div>
-                  <p style={{ fontSize: '11px', color: '#aaa', fontWeight: '600', textTransform: 'uppercase', margin: 0 }}>Email</p>
-                  <p style={{ fontSize: '13px', color: '#1a1a2e', fontWeight: '600', margin: '3px 0 0' }}>{r.email}</p>
-                </div>
-                <div>
-                  <p style={{ fontSize: '11px', color: '#aaa', fontWeight: '600', textTransform: 'uppercase', margin: 0 }}>Phone</p>
-                  <p style={{ fontSize: '13px', color: '#1a1a2e', fontWeight: '600', margin: '3px 0 0' }}>{r.phone}</p>
-                </div>
+              {/* Details Grid */}
+              <div className="grid grid-cols-2 gap-3 mt-4 rounded-xl p-3 md:p-4" style={{background:'#f7f8fc'}}>
+                {[
+                  {label:'Bank Account', value:r.bankAccount},
+                  {label:'IFSC Code', value:r.ifscCode},
+                  {label:'Email', value:r.email},
+                  {label:'Phone', value:r.phone},
+                ].map((detail, i) => (
+                  <div key={i}>
+                    <p className="text-xs font-semibold uppercase tracking-wider m-0" style={{color:'#aaa'}}>{detail.label}</p>
+                    <p className="text-sm font-semibold m-0 mt-0.5 truncate" style={{color:'#1a1a2e'}}>{detail.value}</p>
+                  </div>
+                ))}
               </div>
-
             </div>
           ))}
         </div>
 
-        {/* Bottom Button */}
+        {/* ── BOTTOM BUTTON ── */}
         {!loading && recipients.length > 0 && (
-          <button
-            onClick={() => navigate('/dashboard')}
-            style={{
-              width: '100%', marginTop: '24px', marginBottom: '32px',
-              padding: '18px',
-              background: 'linear-gradient(135deg, #0f4c81, #1a7a6e)',
-              color: 'white', border: 'none', borderRadius: '16px',
-              fontSize: '16px', fontWeight: '700', cursor: 'pointer',
-              fontFamily: 'Sora, sans-serif'
-            }}
-          >
+          <button onClick={() => navigate('/dashboard')}
+            className="w-full mt-6 mb-8 py-5 text-white font-bold text-base border-none rounded-2xl cursor-pointer transition-all hover:-translate-y-0.5"
+            style={{background:'linear-gradient(135deg, #0f4c81, #1a7a6e)', fontFamily:"'Sora', sans-serif", boxShadow:'0 8px 24px rgba(15,76,129,0.3)'}}>
             ← Back to Dashboard
           </button>
         )}
-                    {/* Edit Modal */}
-      {editRecipient && (
-        <AddRecipientModal
-          onClose={() => setEditRecipient(null)}
-          editRecipient={editRecipient}
-          onSuccess={(updated, isEdit) => {
-            setRecipients(prev => prev.map(r => r.id === updated.id ? updated : r));
-            setEditRecipient(null);
-            alert(`✅ ${updated.fullName} updated successfully!`);
-          }}
-        />
-      )}
 
+        {/* ── EDIT MODAL ── */}
+        {editRecipient && (
+          <AddRecipientModal
+            onClose={() => setEditRecipient(null)}
+            editRecipient={editRecipient}
+            onSuccess={(updated) => {
+              setRecipients(prev => prev.map(r => r.id === updated.id ? updated : r));
+              setEditRecipient(null);
+              alert(`✅ ${updated.fullName} updated successfully!`);
+            }}
+          />
+        )}
       </div>
     </div>
   );
-  
 }
 
 export default Recipients;

@@ -866,3 +866,86 @@
 {"error":"invalid signature","level":"warn","message":"Invalid token","timestamp":"2026-02-28T01:36:00.856Z"}
 {"error":"invalid signature","level":"warn","message":"Invalid token","timestamp":"2026-02-28T01:36:00.861Z"}
 {"error":"invalid signature","level":"error","message":"Refresh token error","timestamp":"2026-02-28T01:36:00.890Z"}
+{"email":"sam1@gmail.com","level":"warn","message":"Login failed - user not found","timestamp":"2026-02-28T05:08:41.304Z"}
+{"email":"sam1@gmail.com","level":"warn","message":"Login failed - user not found","timestamp":"2026-02-28T05:08:44.001Z"}
+{"email":"sam1@gmail.com","level":"warn","message":"Login failed - user not found","timestamp":"2026-02-28T05:09:01.441Z"}
+{"email":"sam1@gmail.com","level":"warn","message":"Login failed - user not found","timestamp":"2026-02-28T05:09:03.673Z"}
+{"level":"info","message":"🚀 Backend starting","port":5001,"timestamp":"2026-02-28T05:09:39.228Z"}
+{"level":"info","message":"🔒 HTTPS Server running locally","swagger":"https://localhost:5001/api-docs","timestamp":"2026-02-28T05:09:39.242Z","url":"https://localhost:5001"}
+{"email":"sam1@gmail.com","level":"warn","message":"Login failed - user not found","timestamp":"2026-02-28T05:10:02.026Z"}
+{"email":"sam1@gmail.com","level":"warn","message":"Login failed - user not found","timestamp":"2026-02-28T05:10:05.302Z"}
+{"email":"test1@gmail.com","level":"warn","message":"Login failed - user not found","timestamp":"2026-02-28T05:10:30.391Z"}
+{"email":"test1@email.com","level":"info","message":"User logged in successfully","timestamp":"2026-02-28T05:10:45.218Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-28T05:10:45.337Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":50}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-28T05:10:45.367Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-02-28T05:10:45.368Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":50}
+{"level":"info","message":"Balance fetched","timestamp":"2026-02-28T05:10:45.371Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"email":"test1@email.com","level":"info","message":"User logged in successfully","timestamp":"2026-03-01T02:27:36.857Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-03-01T02:27:36.953Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-03-01T02:27:36.957Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-03-01T02:27:36.966Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":50}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-03-01T02:27:36.969Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":50}
+{"error":"jwt expired","level":"warn","message":"Invalid token","timestamp":"2026-03-01T02:47:35.449Z"}
+{"error":"jwt expired","level":"warn","message":"Invalid token","timestamp":"2026-03-01T02:47:35.456Z"}
+{"error":"jwt expired","level":"warn","message":"Invalid token","timestamp":"2026-03-01T02:47:35.460Z"}
+{"error":"jwt expired","level":"warn","message":"Invalid token","timestamp":"2026-03-01T02:47:35.474Z"}
+{"level":"info","message":"Access token refreshed","timestamp":"2026-03-01T02:47:35.536Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-03-01T02:47:35.579Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-03-01T02:47:35.585Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":50}
+{"level":"info","message":"Balance fetched","timestamp":"2026-03-01T02:47:35.589Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-03-01T02:47:35.598Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":50}
+{"error":"jwt expired","level":"warn","message":"Invalid token","timestamp":"2026-03-01T12:10:42.163Z"}
+{"error":"jwt expired","level":"warn","message":"Invalid token","timestamp":"2026-03-01T12:10:42.166Z"}
+{"level":"info","message":"Access token refreshed","timestamp":"2026-03-01T12:10:42.239Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-03-01T12:10:42.265Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-03-01T12:10:42.266Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":0}
+{"error":"jwt expired","level":"warn","message":"Invalid token","timestamp":"2026-03-01T12:47:57.211Z"}
+{"error":"jwt expired","level":"warn","message":"Invalid token","timestamp":"2026-03-01T12:47:57.214Z"}
+{"error":"jwt expired","level":"warn","message":"Invalid token","timestamp":"2026-03-01T12:47:57.215Z"}
+{"error":"jwt expired","level":"warn","message":"Invalid token","timestamp":"2026-03-01T12:47:57.218Z"}
+{"level":"info","message":"Access token refreshed","timestamp":"2026-03-01T12:47:57.260Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-03-01T12:47:57.331Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-03-01T12:47:57.332Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":0}
+{"level":"info","message":"Balance fetched","timestamp":"2026-03-01T12:47:57.335Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-03-01T12:47:57.338Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":0}
+{"level":"info","message":"Balance fetched","timestamp":"2026-03-01T12:48:20.677Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-03-01T12:48:20.685Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":0}
+{"level":"info","message":"Balance fetched","timestamp":"2026-03-01T12:48:20.687Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-03-01T12:48:20.691Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":0}
+{"count":1,"deposits":2,"level":"info","message":"History fetched","timestamp":"2026-03-01T12:48:22.084Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"count":1,"deposits":2,"level":"info","message":"History fetched","timestamp":"2026-03-01T12:48:22.088Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-03-01T12:48:27.164Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-03-01T12:48:27.169Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":0}
+{"level":"info","message":"Balance fetched","timestamp":"2026-03-01T12:48:27.172Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-03-01T12:48:27.181Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":0}
+{"level":"info","message":"Balance fetched","timestamp":"2026-03-01T12:48:30.644Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-03-01T12:48:30.647Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":0}
+{"level":"info","message":"Balance fetched","timestamp":"2026-03-01T12:48:30.649Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-03-01T12:48:30.651Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":0}
+{"level":"info","message":"Balance fetched","timestamp":"2026-03-01T12:48:51.562Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-03-01T12:48:51.566Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":0}
+{"level":"info","message":"Balance fetched","timestamp":"2026-03-01T12:48:51.566Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-03-01T12:48:51.571Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":0}
+{"level":"info","message":"Balance fetched","timestamp":"2026-03-01T12:49:14.832Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-03-01T12:49:14.833Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":0}
+{"level":"info","message":"Balance fetched","timestamp":"2026-03-01T12:49:14.835Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-03-01T12:49:14.837Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":0}
+{"level":"info","message":"Balance fetched","timestamp":"2026-03-01T12:55:02.635Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"error":"jwt expired","level":"warn","message":"Invalid token","timestamp":"2026-03-01T13:09:17.278Z"}
+{"error":"jwt expired","level":"warn","message":"Invalid token","timestamp":"2026-03-01T13:09:17.282Z"}
+{"error":"jwt expired","level":"warn","message":"Invalid token","timestamp":"2026-03-01T13:09:17.284Z"}
+{"error":"jwt expired","level":"warn","message":"Invalid token","timestamp":"2026-03-01T13:09:17.288Z"}
+{"level":"info","message":"Access token refreshed","timestamp":"2026-03-01T13:09:17.336Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-03-01T13:09:17.426Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-03-01T13:09:17.429Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":0}
+{"level":"info","message":"Balance fetched","timestamp":"2026-03-01T13:09:17.433Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-03-01T13:09:17.468Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":0}
+{"level":"info","message":"Balance fetched","timestamp":"2026-03-01T13:09:39.919Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-03-01T13:09:42.665Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"level":"info","message":"Balance fetched","timestamp":"2026-03-01T13:09:42.676Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-03-01T13:09:42.682Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":0}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-03-01T13:09:42.693Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":0}
+{"level":"info","message":"Balance fetched","timestamp":"2026-03-01T13:20:40.902Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-03-01T13:20:40.903Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":0}
+{"level":"info","message":"Balance fetched","timestamp":"2026-03-01T13:20:40.907Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8"}
+{"dailyUsed":0,"level":"info","message":"Limits fetched","timestamp":"2026-03-01T13:20:40.909Z","userId":"45f0f489-2f3f-47df-9a52-7561940bbac8","weeklyUsed":0}

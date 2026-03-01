@@ -5,36 +5,24 @@ function Confirm() {
   const location = useLocation();
   const data = location.state;
 
-  // If someone visits /confirm directly without data, send them back
   if (!data) {
     return (
-   // navigate('/send');
-    <div style={{
-        minHeight: '100vh', background: '#f7f8fc',
-        display: 'flex', flexDirection: 'column',
-        alignItems: 'center', justifyContent: 'center', gap: '16px'
-      }}>
-        <span style={{ fontSize: '48px' }}>⚠️</span>
-        <h2 style={{ color: '#1a1a2e', fontWeight: '800' }}>No Transfer Data Found</h2>
-        <p style={{ color: '#888', fontSize: '14px' }}>Please start a transfer first.</p>
-        <button
-          onClick={() => navigate('/send')}
-          style={{
-            background: 'linear-gradient(135deg, #0f4c81, #1a7a6e)',
-            color: 'white', border: 'none', borderRadius: '16px',
-            padding: '14px 28px', fontWeight: '700', fontSize: '15px',
-            cursor: 'pointer', fontFamily: 'Sora, sans-serif'
-          }}
-        >
+      <div className="min-h-screen flex flex-col items-center justify-center gap-4" style={{background:'#f7f8fc', fontFamily:"'Sora', sans-serif"}}>
+        <span className="text-5xl">⚠️</span>
+        <h2 className="font-extrabold text-xl m-0" style={{color:'#1a1a2e'}}>No Transfer Data Found</h2>
+        <p className="text-sm m-0" style={{color:'#888'}}>Please start a transfer first.</p>
+        <button onClick={() => navigate('/send')}
+          className="text-white font-bold text-base px-7 py-3.5 rounded-2xl border-none cursor-pointer transition-all hover:-translate-y-0.5"
+          style={{background:'linear-gradient(135deg, #0f4c81, #1a7a6e)', fontFamily:"'Sora', sans-serif"}}>
           Start a Transfer →
         </button>
       </div>
     );
-}
+  }
+
   const handleConfirm = async () => {
     try {
       const { sendMoney } = await import('../services/api');
-
       await sendMoney({
         amountSent: data.amount,
         amountReceived: parseFloat(data.recipientGets),
@@ -42,186 +30,123 @@ function Confirm() {
         country: data.country.name,
         exchangeRate: parseFloat(data.exchangeRate),
       });
-
       navigate('/history');
-
     } catch (error) {
       alert(error.response?.data?.message || 'Something went wrong!');
     }
-};
-  return (
-    <div style={{ background: '#f7f8fc', minHeight: '100vh' }}>
+  };
 
-      {/* Header */}
-      <div style={{
-        background: 'linear-gradient(135deg, #0f4c81 0%, #1a7a6e 100%)',
-        padding: '24px 32px',
-      }}>
-        <div style={{ maxWidth: '600px', margin: '0 auto', display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <button
-            onClick={() => navigate('/send')}
-            style={{
-              background: 'rgba(255,255,255,0.15)', border: 'none',
-              borderRadius: '12px', padding: '8px 14px',
-              color: 'white', cursor: 'pointer', fontSize: '18px'
-            }}
-          >
-            ←
-          </button>
+  return (
+    <div className="min-h-screen" style={{background:'#f7f8fc', fontFamily:"'Sora', sans-serif"}}>
+
+      {/* ── HEADER ── */}
+      <div style={{background:'linear-gradient(135deg, #0f4c81 0%, #1a7a6e 100%)'}}>
+        <div className="max-w-xl mx-auto px-5 md:px-8 py-5 flex items-center gap-4">
+          <button onClick={() => navigate('/send')}
+            className="rounded-xl px-3 py-2 text-white text-lg border-none cursor-pointer hover:bg-white/25 transition-all"
+            style={{background:'rgba(255,255,255,0.15)'}}>←</button>
           <div>
-            <h1 style={{ color: 'white', fontWeight: '800', fontSize: '22px', margin: 0 }}>Confirm Transfer</h1>
-            <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '13px', margin: 0 }}>Review before sending</p>
+            <h1 className="text-white font-extrabold text-xl m-0">Confirm Transfer</h1>
+            <p className="text-sm m-0" style={{color:'rgba(255,255,255,0.7)'}}>Review before sending</p>
           </div>
         </div>
       </div>
 
-      <div style={{ maxWidth: '600px', margin: '32px auto', padding: '0 24px' }}>
+      <div className="max-w-xl mx-auto px-5 md:px-8 py-6 md:py-8">
 
-        {/* Summary Card */}
-        <div style={{
-          background: 'white', borderRadius: '24px',
-          boxShadow: '0 4px 20px rgba(0,0,0,0.06)', padding: '32px',
-          marginBottom: '20px'
-        }}>
-          <p style={{ fontSize: '12px', fontWeight: '700', color: '#888', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '20px' }}>
-            Transfer Summary
-          </p>
+        {/* ── SUMMARY CARD ── */}
+        <div className="bg-white rounded-3xl p-7 md:p-8 mb-5" style={{boxShadow:'0 4px 20px rgba(0,0,0,0.06)'}}>
+          <p className="text-xs font-bold uppercase tracking-widest mb-5 m-0" style={{color:'#888'}}>Transfer Summary</p>
 
           {/* You Send */}
-          <div style={{
-            background: '#f7f8fc', borderRadius: '16px',
-            padding: '20px', marginBottom: '12px'
-          }}>
-            <p style={{ fontSize: '12px', color: '#888', marginBottom: '6px' }}>You Send</p>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ fontSize: '24px' }}>🇺🇸</span>
-                <span style={{ fontWeight: '700', color: '#1a1a2e', fontSize: '16px' }}>USD</span>
+          <div className="rounded-2xl p-5 mb-3" style={{background:'#f7f8fc'}}>
+            <p className="text-xs m-0 mb-1.5" style={{color:'#888'}}>You Send</p>
+            <div className="flex justify-between items-center">
+              <div className="flex items-center gap-2">
+                <span className="text-2xl">🇺🇸</span>
+                <span className="font-bold text-base" style={{color:'#1a1a2e'}}>USD</span>
               </div>
-              <span style={{ fontWeight: '800', fontSize: '28px', color: '#1a1a2e' }}>
+              <span className="font-extrabold" style={{fontSize:'clamp(22px, 3vw, 28px)', color:'#1a1a2e'}}>
                 ${data.amount.toFixed(2)}
               </span>
             </div>
           </div>
 
           {/* Arrow */}
-          <div style={{ textAlign: 'center', margin: '4px 0' }}>
-            <span style={{ fontSize: '20px' }}>↓</span>
-          </div>
+          <div className="text-center my-1 text-xl">↓</div>
 
           {/* Recipient Gets */}
-          <div style={{
-            background: 'linear-gradient(135deg, #0f4c81, #1a7a6e)',
-            borderRadius: '16px', padding: '20px', marginBottom: '24px'
-          }}>
-            <p style={{ fontSize: '12px', color: 'rgba(255,255,255,0.7)', marginBottom: '6px' }}>Recipient Gets</p>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                <span style={{ fontSize: '24px' }}>{data.country.flag}</span>
-                <span style={{ fontWeight: '700', color: 'white', fontSize: '16px' }}>{data.country.code}</span>
+          <div className="rounded-2xl p-5 mb-6" style={{background:'linear-gradient(135deg, #0f4c81, #1a7a6e)'}}>
+            <p className="text-xs m-0 mb-1.5" style={{color:'rgba(255,255,255,0.7)'}}>Recipient Gets</p>
+            <div className="flex justify-between items-center">
+              <div className="flex items-center gap-2">
+                <span className="text-2xl">{data.country.flag}</span>
+                <span className="font-bold text-base text-white">{data.country.code}</span>
               </div>
-              <span style={{ fontWeight: '800', fontSize: '28px', color: 'white' }}>
+              <span className="font-extrabold text-white" style={{fontSize:'clamp(22px, 3vw, 28px)'}}>
                 {data.recipientGets}
               </span>
             </div>
           </div>
 
           {/* Breakdown */}
-          <div style={{ borderTop: '1.5px solid #f0f0f0', paddingTop: '20px' }}>
-            <p style={{ fontSize: '12px', fontWeight: '700', color: '#888', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '14px' }}>
-              Breakdown
-            </p>
-
-            {/* Row */}
+          <div className="pt-5" style={{borderTop:'1.5px solid #f0f0f0'}}>
+            <p className="text-xs font-bold uppercase tracking-widest mb-4 m-0" style={{color:'#888'}}>Breakdown</p>
             {[
-              { label: 'Transfer Amount', value: `$${data.amount.toFixed(2)}` },
-              { label: 'Transfer Fee', value: `- $${data.fee}`, color: '#e74c3c' },
-              { label: 'Amount After Fee', value: `$${data.amountAfterFee}` },
-              { label: 'Exchange Rate', value: `1 USD = ${data.exchangeRate} ${data.country.code}` },
-              { label: 'Estimated Delivery', value: `⚡ ${data.country.delivery}`, color: '#1a7a6e' },
-            ].map((row) => (
-              <div key={row.label} style={{
-                display: 'flex', justifyContent: 'space-between',
-                alignItems: 'center', marginBottom: '12px'
-              }}>
-                <span style={{ fontSize: '14px', color: '#888' }}>{row.label}</span>
-                <span style={{ fontSize: '14px', fontWeight: '600', color: row.color || '#1a1a2e' }}>
-                  {row.value}
-                </span>
+              {label:'Transfer Amount', value:`$${data.amount.toFixed(2)}`},
+              {label:'Transfer Fee', value:`- $${data.fee}`, color:'#e74c3c'},
+              {label:'Amount After Fee', value:`$${data.amountAfterFee}`},
+              {label:'Exchange Rate', value:`1 USD = ${data.exchangeRate} ${data.country.code}`},
+              {label:'Estimated Delivery', value:`⚡ ${data.country.delivery}`, color:'#1a7a6e'},
+            ].map((row, i) => (
+              <div key={i} className="flex justify-between items-center mb-3">
+                <span className="text-sm" style={{color:'#888'}}>{row.label}</span>
+                <span className="text-sm font-semibold" style={{color: row.color || '#1a1a2e'}}>{row.value}</span>
               </div>
             ))}
           </div>
         </div>
 
-        {/* Recipient Details Card */}
-        <div style={{
-          background: 'white', borderRadius: '24px',
-          boxShadow: '0 4px 20px rgba(0,0,0,0.06)', padding: '28px',
-          marginBottom: '20px'
-        }}>
-          <p style={{ fontSize: '12px', fontWeight: '700', color: '#888', textTransform: 'uppercase', letterSpacing: '1px', marginBottom: '16px' }}>
-            Sending To
-          </p>
-          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-            <div style={{
-              background: 'linear-gradient(135deg, #0f4c81, #1a7a6e)',
-              borderRadius: '50%', width: '48px', height: '48px',
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              fontSize: '20px', color: 'white', fontWeight: '800'
-            }}>
+        {/* ── RECIPIENT CARD ── */}
+        <div className="bg-white rounded-3xl p-6 md:p-7 mb-5" style={{boxShadow:'0 4px 20px rgba(0,0,0,0.06)'}}>
+          <p className="text-xs font-bold uppercase tracking-widest mb-4 m-0" style={{color:'#888'}}>Sending To</p>
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-full flex items-center justify-center text-xl text-white font-extrabold flex-shrink-0"
+              style={{background:'linear-gradient(135deg, #0f4c81, #1a7a6e)'}}>
               {data.country.flag}
             </div>
             <div>
-              <p style={{ fontWeight: '700', color: '#1a1a2e', fontSize: '16px' }}>{data.country.name}</p>
-              <p style={{ fontSize: '13px', color: '#888' }}>{data.country.currency}</p>
+              <p className="font-bold text-base m-0" style={{color:'#1a1a2e'}}>{data.country.name}</p>
+              <p className="text-sm m-0 mt-0.5" style={{color:'#888'}}>{data.country.currency}</p>
             </div>
           </div>
         </div>
 
-        {/* Warning */}
-        <div style={{
-          background: '#fff8f0', border: '1.5px solid #ffe0b2',
-          borderRadius: '16px', padding: '16px 20px', marginBottom: '24px',
-          display: 'flex', gap: '12px', alignItems: 'flex-start'
-        }}>
-          <span style={{ fontSize: '18px' }}>⚠️</span>
-          <p style={{ fontSize: '13px', color: '#e67e22', margin: 0, lineHeight: '1.5' }}>
+        {/* ── WARNING ── */}
+        <div className="rounded-2xl px-5 py-4 mb-6 flex gap-3 items-start"
+          style={{background:'#fff8f0', border:'1.5px solid #ffe0b2'}}>
+          <span className="text-lg">⚠️</span>
+          <p className="text-sm m-0 leading-relaxed" style={{color:'#e67e22'}}>
             Please review all details carefully. Once confirmed, transfers cannot be cancelled.
           </p>
         </div>
 
-        {/* Buttons */}
-        <div style={{ display: 'flex', gap: '12px' }}>
-          <button
-            onClick={() => navigate('/send')}
-            style={{
-              flex: 1, padding: '18px',
-              background: 'white', color: '#0f4c81',
-              border: '2px solid #0f4c81', borderRadius: '16px',
-              fontSize: '15px', fontWeight: '700', cursor: 'pointer',
-              fontFamily: 'Sora, sans-serif'
-            }}
-          >
+        {/* ── BUTTONS ── */}
+        <div className="flex gap-3 mb-8">
+          <button onClick={() => navigate('/send')}
+            className="flex-1 py-4 rounded-2xl font-bold text-base cursor-pointer transition-all hover:-translate-y-0.5"
+            style={{background:'white', color:'#0f4c81', border:'2px solid #0f4c81', fontFamily:"'Sora', sans-serif"}}>
             ← Edit
           </button>
-          <button
-            onClick={handleConfirm}
-            style={{
-              flex: 2, padding: '18px',
-              background: 'linear-gradient(135deg, #0f4c81, #1a7a6e)',
-              color: 'white', border: 'none', borderRadius: '16px',
-              fontSize: '15px', fontWeight: '700', cursor: 'pointer',
-              fontFamily: 'Sora, sans-serif', transition: 'transform 0.2s'
-            }}
-            onMouseOver={e => e.target.style.transform = 'translateY(-2px)'}
-            onMouseOut={e => e.target.style.transform = 'translateY(0)'}
-          >
+          <button onClick={handleConfirm}
+            className="text-white font-bold text-base border-none cursor-pointer transition-all hover:-translate-y-0.5 rounded-2xl py-4"
+            style={{flex:2, background:'linear-gradient(135deg, #0f4c81, #1a7a6e)', fontFamily:"'Sora', sans-serif", boxShadow:'0 8px 24px rgba(15,76,129,0.3)'}}>
             Confirm & Send 💸
           </button>
         </div>
-
       </div>
     </div>
   );
 }
+
 export default Confirm;

@@ -5,14 +5,19 @@ import WorldMap from '../components/WorldMap';
 
 const FLAT_FEE = 0.99;
 
+const styles = `
+  @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+  .spinner { animation: spin 1s linear infinite; }
+`;
+
 const countries = [
-  { code: 'GBP', name: 'United Kingdom', flag: '🇬🇧', currency: 'British Pound', delivery: '1-2 hours' },
-  { code: 'EUR', name: 'Europe', flag: '🇪🇺', currency: 'Euro', delivery: '1-2 hours' },
-  { code: 'INR', name: 'India', flag: '🇮🇳', currency: 'Indian Rupee', delivery: 'Instant' },
-  { code: 'AUD', name: 'Australia', flag: '🇦🇺', currency: 'Australian Dollar', delivery: '2-3 hours' },
-  { code: 'CAD', name: 'Canada', flag: '🇨🇦', currency: 'Canadian Dollar', delivery: '2-3 hours' },
-  { code: 'SGD', name: 'Singapore', flag: '🇸🇬', currency: 'Singapore Dollar', delivery: '1-2 hours' },
-  { code: 'AED', name: 'UAE', flag: '🇦🇪', currency: 'UAE Dirham', delivery: 'Instant' },
+  { code:'GBP', name:'United Kingdom', flag:'🇬🇧', currency:'British Pound', delivery:'1-2 hours' },
+  { code:'EUR', name:'Europe', flag:'🇪🇺', currency:'Euro', delivery:'1-2 hours' },
+  { code:'INR', name:'India', flag:'🇮🇳', currency:'Indian Rupee', delivery:'Instant' },
+  { code:'AUD', name:'Australia', flag:'🇦🇺', currency:'Australian Dollar', delivery:'2-3 hours' },
+  { code:'CAD', name:'Canada', flag:'🇨🇦', currency:'Canadian Dollar', delivery:'2-3 hours' },
+  { code:'SGD', name:'Singapore', flag:'🇸🇬', currency:'Singapore Dollar', delivery:'1-2 hours' },
+  { code:'AED', name:'UAE', flag:'🇦🇪', currency:'UAE Dirham', delivery:'Instant' },
 ];
 
 function SendMoney() {
@@ -27,421 +32,199 @@ function SendMoney() {
   const [apiStatus, setApiStatus] = useState('Getting best exchange rates for you...');
   const [selectedRecipient, setSelectedRecipient] = useState(preselectedRecipient);
   const [recipients, setRecipients] = useState([]);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768);
 
-  // Handle resize
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 768);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  // Fetch exchange rates with failover
   useEffect(() => {
     const fetchRates = async () => {
-
-      // ─── API 1: Frankfurter.app ───────────────────────────
       try {
         setApiStatus('Getting best exchange rates for you...');
-        console.log('🔄 Trying API 1 — Frankfurter...');
-        const response = await fetch(
-          'https://api.frankfurter.app/latest?from=USD&to=GBP,EUR,INR,AUD,CAD,SGD,AED',
-          { signal: AbortSignal.timeout(5000) }
-        );
-        if (!response.ok) throw new Error('API 1 failed');
+        const response = await fetch('https://api.frankfurter.app/latest?from=USD&to=GBP,EUR,INR,AUD,CAD,SGD,AED', { signal: AbortSignal.timeout(5000) });
+        if (!response.ok) throw new Error('failed');
         const data = await response.json();
-        setRates(data.rates);
-        setLoading(false);
-        console.log('✅ API 1 success!');
-        return;
-      } catch (error) {
-        console.log('❌ API 1 failed — retrying...', error.message);
-      }
-
-      // ─── API 1 RETRY ─────────────────────────────────────
-      try {
-        setApiStatus('Finding the best rates...');
-        await new Promise(resolve => setTimeout(resolve, 500));
-        console.log('🔄 Retrying API 1...');
-        const response = await fetch(
-          'https://api.frankfurter.app/latest?from=USD&to=GBP,EUR,INR,AUD,CAD,SGD,AED',
-          { signal: AbortSignal.timeout(5000) }
-        );
-        if (!response.ok) throw new Error('API 1 retry failed');
-        const data = await response.json();
-        setRates(data.rates);
-        setLoading(false);
-        console.log('✅ API 1 retry success!');
-        return;
-      } catch (error) {
-        console.log('❌ API 1 retry failed — switching to API 2...', error.message);
-      }
-
-      // ─── API 2: ExchangeRate-API Open Access ──────────────
+        setRates(data.rates); setLoading(false); return;
+      } catch {}
       try {
         setApiStatus('Checking backup rate provider...');
-        console.log('🔄 Trying API 2 — ExchangeRate-API...');
-        const response = await fetch(
-          'https://open.er-api.com/v6/latest/USD',
-          { signal: AbortSignal.timeout(5000) }
-        );
-        if (!response.ok) throw new Error('API 2 failed');
+        const response = await fetch('https://open.er-api.com/v6/latest/USD', { signal: AbortSignal.timeout(5000) });
+        if (!response.ok) throw new Error('failed');
         const data = await response.json();
         const { GBP, EUR, INR, AUD, CAD, SGD, AED } = data.rates;
-        setRates({ GBP, EUR, INR, AUD, CAD, SGD, AED });
-        setLoading(false);
-        console.log('✅ API 2 success!');
-        return;
-      } catch (error) {
-        console.log('❌ API 2 failed — switching to API 3...', error.message);
-      }
-
-      // ─── API 3: Fawaz Currency API ────────────────────────
+        setRates({ GBP, EUR, INR, AUD, CAD, SGD, AED }); setLoading(false); return;
+      } catch {}
       try {
         setApiStatus('Almost there...');
-        console.log('🔄 Trying API 3 — Fawaz Currency API...');
-        const response = await fetch(
-          'https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json',
-          { signal: AbortSignal.timeout(5000) }
-        );
-        if (!response.ok) throw new Error('API 3 failed');
+        const response = await fetch('https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json', { signal: AbortSignal.timeout(5000) });
+        if (!response.ok) throw new Error('failed');
         const data = await response.json();
         const r = data.usd;
-        setRates({
-          GBP: r.gbp, EUR: r.eur, INR: r.inr,
-          AUD: r.aud, CAD: r.cad, SGD: r.sgd, AED: r.aed
-        });
-        setLoading(false);
-        console.log('✅ API 3 success!');
-        return;
-      } catch (error) {
-        console.log('❌ API 3 failed — all APIs down!', error.message);
-      }
-
-      // ─── ALL APIS FAILED ─────────────────────────────────
-      console.log('🚨 All APIs failed — using fallback rates!');
-      setApiStatus('Using cached rates — live rates unavailable');
-      setRates({
-        GBP: 0.79, EUR: 0.92, INR: 83.12,
-        AUD: 1.53, CAD: 1.36, SGD: 1.34, AED: 3.67
-      });
+        setRates({ GBP:r.gbp, EUR:r.eur, INR:r.inr, AUD:r.aud, CAD:r.cad, SGD:r.sgd, AED:r.aed });
+        setLoading(false); return;
+      } catch {}
+      setApiStatus('Using cached rates');
+      setRates({ GBP:0.79, EUR:0.92, INR:83.12, AUD:1.53, CAD:1.36, SGD:1.34, AED:3.67 });
       setLoading(false);
     };
-
     fetchRates();
   }, []);
 
-  // Fetch recipients
   useEffect(() => {
     const fetchRecipients = async () => {
       try {
         const response = await getRecipients();
         setRecipients(response.data.recipients);
-      } catch (error) {
-        console.log('Error fetching recipients:', error);
-      }
+      } catch {}
     };
     fetchRecipients();
   }, []);
 
-  // Calculation logic
   const amountNumber = parseFloat(amount) || 0;
   const amountAfterFee = amountNumber - FLAT_FEE;
   const recipientGets = amountAfterFee > 0
-    ? (amountAfterFee * (rates[selectedCountry.code] || 0)).toFixed(2)
-    : '0.00';
+    ? (amountAfterFee * (rates[selectedCountry.code] || 0)).toFixed(2) : '0.00';
   const exchangeRate = rates[selectedCountry.code]
-    ? rates[selectedCountry.code].toFixed(4)
-    : '...';
+    ? rates[selectedCountry.code].toFixed(4) : '...';
 
-  // Handle continue
   const handleContinue = () => {
     if (!amount || amountNumber <= FLAT_FEE) {
-      alert(`Amount must be greater than $${FLAT_FEE} to cover the fee!`);
-      return;
+      alert(`Amount must be greater than $${FLAT_FEE} to cover the fee!`); return;
     }
     navigate('/confirm', {
       state: {
-        amount: amountNumber,
-        fee: FLAT_FEE,
+        amount: amountNumber, fee: FLAT_FEE,
         amountAfterFee: amountAfterFee.toFixed(2),
-        recipientGets,
-        exchangeRate,
-        country: selectedCountry,
-        recipient: selectedRecipient,
+        recipientGets, exchangeRate,
+        country: selectedCountry, recipient: selectedRecipient,
       }
     });
   };
 
   return (
-    <div style={{ background: '#f7f8fc', minHeight: '100vh' }}>
+    <div className="min-h-screen" style={{background:'#f7f8fc', fontFamily:"'Sora', sans-serif"}}>
+      <style>{styles}</style>
 
-      {/* Loading Screen */}
+      {/* ── LOADING ── */}
       {loading && (
-        <div style={{
-          position: 'fixed', inset: 0,
-          background: 'linear-gradient(135deg, #0f4c81, #1a7a6e)',
-          display: 'flex', flexDirection: 'column',
-          alignItems: 'center', justifyContent: 'center',
-          zIndex: 999
-        }}>
-          <div style={{
-            width: '64px', height: '64px',
-            border: '4px solid rgba(255,255,255,0.2)',
-            borderTop: '4px solid white',
-            borderRadius: '50%',
-            animation: 'spin 1s linear infinite',
-            marginBottom: '24px'
-          }} />
-          <p style={{ fontSize: '48px', marginBottom: '12px' }}>🌍</p>
-          <p style={{
-            color: 'white', fontWeight: '700', fontSize: '18px',
-            marginBottom: '8px', fontFamily: 'Sora, sans-serif',
-            textAlign: 'center', padding: '0 32px'
-          }}>
-            {apiStatus}
-          </p>
-          <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '13px', fontFamily: 'Sora, sans-serif' }}>
-            Powered by live market data
-          </p>
-          <style>{`@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }`}</style>
+        <div className="fixed inset-0 flex flex-col items-center justify-center z-50"
+          style={{background:'linear-gradient(135deg, #0f4c81, #1a7a6e)'}}>
+          <div className="w-16 h-16 rounded-full mb-6 spinner"
+            style={{border:'4px solid rgba(255,255,255,0.2)', borderTop:'4px solid white'}}/>
+          <p className="text-5xl mb-3">🌍</p>
+          <p className="text-white font-bold text-lg mb-2 text-center px-8">{apiStatus}</p>
+          <p className="text-sm" style={{color:'rgba(255,255,255,0.6)'}}>Powered by live market data</p>
         </div>
       )}
 
-      {/* Header */}
-      <div style={{
-        background: 'linear-gradient(135deg, #0f4c81 0%, #1a7a6e 100%)',
-        padding: '24px 32px',
-      }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'flex', alignItems: 'center', gap: '16px' }}>
-          <button
-            onClick={() => navigate('/dashboard')}
-            style={{
-              background: 'rgba(255,255,255,0.15)', border: 'none',
-              borderRadius: '12px', padding: '8px 14px',
-              color: 'white', cursor: 'pointer', fontSize: '18px'
-            }}
-          >←</button>
+      {/* ── HEADER ── */}
+      <div style={{background:'linear-gradient(135deg, #0f4c81 0%, #1a7a6e 100%)'}}>
+        <div className="max-w-6xl mx-auto px-5 md:px-8 py-5 flex items-center gap-4">
+          <button onClick={() => navigate('/dashboard')}
+            className="rounded-xl px-3 py-2 text-white text-lg border-none cursor-pointer hover:bg-white/25 transition-all"
+            style={{background:'rgba(255,255,255,0.15)'}}>←</button>
           <div>
-            <h1 style={{ color: 'white', fontWeight: '800', fontSize: '22px', margin: 0 }}>Send Money</h1>
-            <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '13px', margin: 0 }}>Fast & secure international transfers</p>
+            <h1 className="text-white font-extrabold text-xl m-0">Send Money</h1>
+            <p className="text-sm m-0" style={{color:'rgba(255,255,255,0.7)'}}>Fast & secure international transfers</p>
           </div>
         </div>
       </div>
 
-      {/* Two Column Layout */}
-      <div style={{
-        maxWidth: '1200px',
-        margin: '32px auto',
-        padding: '0 24px',
-        display: 'grid',
-        gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
-        gap: '10px',
-        alignItems: 'stretch'
-      }}>
+      {/* ── CONTENT ── */}
+      <div className="max-w-6xl mx-auto px-5 md:px-8 py-6 md:py-8 grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
 
-        {/* LEFT — World Map (hidden on mobile) */}
-        {!isMobile && (
-          <WorldMap 
-          selectedCountry={selectedCountry?.name}
-          recipientCountry={selectedRecipient?.country}
-        />
-        )}
+        {/* World Map — desktop only */}
+        <div className="hidden lg:block">
+          <WorldMap selectedCountry={selectedCountry?.name} recipientCountry={selectedRecipient?.country}/>
+        </div>
 
-        {/* RIGHT — Form */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        {/* Form */}
+        <div className="flex flex-col gap-4">
 
-          {/* Recipient Selector */}
-          <div style={{
-            background: 'white', borderRadius: '20px',
-            padding: '20px', boxShadow: '0 4px 20px rgba(0,0,0,0.06)'
-          }}>
-            <p style={{ fontWeight: '700', fontSize: '15px', color: '#1a1a2e', margin: '0 0 12px' }}>
-              👤 Send To
-            </p>
-            <select
-              value={selectedRecipient?.id || ''}
-              onChange={(e) => {
-                const recipient = recipients.find(r => r.id === e.target.value);
-                setSelectedRecipient(recipient || null);
-              }}
-              style={{
-                width: '100%', padding: '12px 16px',
-                border: '2px solid #e0e0e0', borderRadius: '12px',
-                fontSize: '14px', fontFamily: 'Sora, sans-serif',
-                color: '#1a1a2e', outline: 'none',
-                background: 'white', marginBottom: '12px',
-                boxSizing: 'border-box'
-              }}
-            >
+          {/* Recipient */}
+          <div className="bg-white rounded-2xl p-5" style={{boxShadow:'0 4px 20px rgba(0,0,0,0.06)'}}>
+            <p className="font-bold text-base m-0 mb-3" style={{color:'#1a1a2e'}}>👤 Send To</p>
+            <select value={selectedRecipient?.id || ''}
+              onChange={e => setSelectedRecipient(recipients.find(r => r.id === e.target.value) || null)}
+              className="w-full px-4 py-3 rounded-xl text-sm outline-none mb-3"
+              style={{border:'2px solid #e0e0e0', color:'#1a1a2e', fontFamily:"'Sora', sans-serif", boxSizing:'border-box'}}>
               <option value="">Select a recipient...</option>
-              {recipients.map(r => (
-                <option key={r.id} value={r.id}>
-                  {r.fullName} — {r.country}
-                </option>
-              ))}
+              {recipients.map(r => <option key={r.id} value={r.id}>{r.fullName} — {r.country}</option>)}
             </select>
 
             {selectedRecipient && (
-              <div style={{
-                background: '#f0f7ff', borderRadius: '14px',
-                padding: '14px', display: 'flex',
-                alignItems: 'center', gap: '12px'
-              }}>
-                <div style={{
-                  width: '42px', height: '42px',
-                  background: 'linear-gradient(135deg, #0f4c81, #1a7a6e)',
-                  borderRadius: '50%', display: 'flex',
-                  alignItems: 'center', justifyContent: 'center',
-                  color: 'white', fontWeight: '700', fontSize: '16px',
-                  flexShrink: 0
-                }}>
+              <div className="rounded-2xl p-4 flex items-center gap-3" style={{background:'#f0f7ff'}}>
+                <div className="w-11 h-11 rounded-full flex items-center justify-center text-white font-bold flex-shrink-0"
+                  style={{background:'linear-gradient(135deg, #0f4c81, #1a7a6e)'}}>
                   {selectedRecipient.fullName.charAt(0).toUpperCase()}
                 </div>
                 <div>
-                  <p style={{ fontWeight: '700', fontSize: '14px', color: '#1a1a2e', margin: 0 }}>
-                    {selectedRecipient.fullName}
-                  </p>
-                  <p style={{ fontSize: '12px', color: '#888', margin: '2px 0 0' }}>
-                    {selectedRecipient.country} · {selectedRecipient.bankAccount} · {selectedRecipient.ifscCode}
-                  </p>
-                  <p style={{ fontSize: '12px', color: '#0f4c81', fontWeight: '600', margin: '2px 0 0' }}>
-                    {selectedRecipient.transferringTo}
-                  </p>
+                  <p className="font-bold text-sm m-0" style={{color:'#1a1a2e'}}>{selectedRecipient.fullName}</p>
+                  <p className="text-xs m-0 mt-0.5" style={{color:'#888'}}>{selectedRecipient.country} · {selectedRecipient.bankAccount} · {selectedRecipient.ifscCode}</p>
+                  <p className="text-xs font-semibold m-0 mt-0.5" style={{color:'#0f4c81'}}>{selectedRecipient.transferringTo}</p>
                 </div>
               </div>
             )}
           </div>
 
           {/* You Send */}
-          <div style={{
-            background: 'white', borderRadius: '20px',
-            padding: '20px', boxShadow: '0 4px 20px rgba(0,0,0,0.06)'
-          }}>
-            <label style={{ fontSize: '13px', fontWeight: '600', color: '#888', textTransform: 'uppercase', letterSpacing: '1px' }}>
-              You Send
-            </label>
-            <div style={{
-              display: 'flex', alignItems: 'center', gap: '12px',
-              border: '2px solid #f0f0f0', borderRadius: '16px',
-              padding: '16px 20px', marginTop: '8px',
-            }}>
-              <span style={{ fontSize: '22px', fontWeight: '800', color: '#0f4c81' }}>🇺🇸</span>
-              <span style={{ fontWeight: '700', color: '#0f4c81', fontSize: '16px' }}>USD</span>
-              <span style={{ color: '#ddd', fontSize: '20px' }}>|</span>
-              <input
-                type="number"
-                placeholder="Enter amount"
-                value={amount}
-                onChange={(e) => setAmount(e.target.value)}
-                style={{
-                  border: 'none', outline: 'none', fontSize: '24px',
-                  fontWeight: '800', color: '#1a1a2e', width: '100%',
-                  fontFamily: 'Sora, sans-serif', background: 'transparent'
-                }}
-              />
+          <div className="bg-white rounded-2xl p-5" style={{boxShadow:'0 4px 20px rgba(0,0,0,0.06)'}}>
+            <label className="text-xs font-semibold uppercase tracking-widest" style={{color:'#888'}}>You Send</label>
+            <div className="flex items-center gap-3 rounded-2xl px-5 py-4 mt-2" style={{border:'2px solid #f0f0f0'}}>
+              <span className="text-2xl">🇺🇸</span>
+              <span className="font-bold text-base" style={{color:'#0f4c81'}}>USD</span>
+              <span style={{color:'#ddd', fontSize:'20px'}}>|</span>
+              <input type="number" placeholder="Enter amount" value={amount}
+                onChange={e => setAmount(e.target.value)}
+                className="border-none outline-none font-extrabold flex-1 bg-transparent"
+                style={{fontSize:'clamp(18px, 3vw, 24px)', color:'#1a1a2e', fontFamily:"'Sora', sans-serif"}}/>
             </div>
           </div>
 
           {/* Fee Info */}
-          <div style={{
-            background: 'white', borderRadius: '20px',
-            padding: '20px', boxShadow: '0 4px 20px rgba(0,0,0,0.06)'
-          }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
-              <span style={{ fontSize: '13px', color: '#888' }}>Transfer Fee</span>
-              <span style={{ fontSize: '13px', fontWeight: '600', color: '#1a1a2e' }}>- ${FLAT_FEE}</span>
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '10px' }}>
-              <span style={{ fontSize: '13px', color: '#888' }}>Exchange Rate</span>
-              <span style={{ fontSize: '13px', fontWeight: '600', color: '#1a1a2e' }}>
-                1 USD = {loading ? '...' : exchangeRate} {selectedCountry.code}
-              </span>
-            </div>
-            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
-              <span style={{ fontSize: '13px', color: '#888' }}>Estimated Delivery</span>
-              <span style={{ fontSize: '13px', fontWeight: '600', color: '#1a7a6e' }}>
-                ⚡ {selectedCountry.delivery}
-              </span>
-            </div>
+          <div className="bg-white rounded-2xl p-5" style={{boxShadow:'0 4px 20px rgba(0,0,0,0.06)'}}>
+            {[
+              {label:'Transfer Fee', value:`- $${FLAT_FEE}`},
+              {label:'Exchange Rate', value:`1 USD = ${loading ? '...' : exchangeRate} ${selectedCountry.code}`},
+              {label:'Estimated Delivery', value:`⚡ ${selectedCountry.delivery}`, teal:true},
+            ].map((item, i) => (
+              <div key={i} className={`flex justify-between ${i < 2 ? 'mb-3' : ''}`}>
+                <span className="text-sm" style={{color:'#888'}}>{item.label}</span>
+                <span className="text-sm font-semibold" style={{color: item.teal ? '#1a7a6e' : '#1a1a2e'}}>{item.value}</span>
+              </div>
+            ))}
           </div>
 
-          {/* Swap Arrow */}
-          <div style={{ textAlign: 'center' }}>
-            <div style={{
-              display: 'inline-block',
-              background: 'linear-gradient(135deg, #0f4c81, #1a7a6e)',
-              borderRadius: '50%', padding: '10px 14px',
-              fontSize: '20px'
-            }}>
-              ↕️
-            </div>
+          {/* Arrow */}
+          <div className="flex justify-center">
+            <div className="rounded-full px-4 py-2.5 text-xl" style={{background:'linear-gradient(135deg, #0f4c81, #1a7a6e)'}}>↕️</div>
           </div>
 
           {/* Recipient Gets */}
-          <div style={{
-            background: 'white', borderRadius: '20px',
-            padding: '20px', boxShadow: '0 4px 20px rgba(0,0,0,0.06)'
-          }}>
-            <label style={{ fontSize: '13px', fontWeight: '600', color: '#888', textTransform: 'uppercase', letterSpacing: '1px' }}>
-              Recipient Gets
-            </label>
-
-            {/* Country Selector */}
-            <div style={{
-              border: '2px solid #f0f0f0', borderRadius: '16px',
-              padding: '16px 20px', marginTop: '8px'
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px' }}>
-                <span style={{ fontSize: '22px' }}>{selectedCountry.flag}</span>
-                <select
-                  value={selectedCountry.code}
-                  onChange={(e) => setSelectedCountry(countries.find(c => c.code === e.target.value))}
-                  style={{
-                    border: 'none', outline: 'none', fontSize: '16px',
-                    fontWeight: '700', color: '#1a1a2e',
-                    fontFamily: 'Sora, sans-serif', background: 'transparent',
-                    cursor: 'pointer', width: '100%'
-                  }}
-                >
-                  {countries.map((country) => (
-                    <option key={country.code} value={country.code}>
-                      {country.flag} {country.name} — {country.currency}
-                    </option>
-                  ))}
+          <div className="bg-white rounded-2xl p-5" style={{boxShadow:'0 4px 20px rgba(0,0,0,0.06)'}}>
+            <label className="text-xs font-semibold uppercase tracking-widest" style={{color:'#888'}}>Recipient Gets</label>
+            <div className="rounded-2xl px-5 py-4 mt-2" style={{border:'2px solid #f0f0f0'}}>
+              <div className="flex items-center gap-3 mb-3">
+                <span className="text-2xl">{selectedCountry.flag}</span>
+                <select value={selectedCountry.code}
+                  onChange={e => setSelectedCountry(countries.find(c => c.code === e.target.value))}
+                  className="border-none outline-none font-bold text-base flex-1 bg-transparent cursor-pointer"
+                  style={{color:'#1a1a2e', fontFamily:"'Sora', sans-serif"}}>
+                  {countries.map(c => <option key={c.code} value={c.code}>{c.flag} {c.name} — {c.currency}</option>)}
                 </select>
               </div>
-
-              <div style={{
-                background: 'linear-gradient(135deg, #0f4c81, #1a7a6e)',
-                borderRadius: '12px', padding: '14px 18px',
-                display: 'flex', justifyContent: 'space-between', alignItems: 'center'
-              }}>
-                <span style={{ color: 'rgba(255,255,255,0.8)', fontSize: '13px' }}>They receive</span>
-                <span style={{ color: 'white', fontWeight: '800', fontSize: '24px' }}>
+              <div className="rounded-xl px-4 py-3 flex justify-between items-center"
+                style={{background:'linear-gradient(135deg, #0f4c81, #1a7a6e)'}}>
+                <span className="text-sm" style={{color:'rgba(255,255,255,0.8)'}}>They receive</span>
+                <span className="text-white font-extrabold" style={{fontSize:'clamp(18px, 2.5vw, 24px)'}}>
                   {recipientGets} {selectedCountry.code}
                 </span>
               </div>
             </div>
           </div>
 
-          {/* Continue Button */}
-          <button
-            onClick={handleContinue}
-            style={{
-              width: '100%', padding: '18px',
-              background: 'linear-gradient(135deg, #0f4c81, #1a7a6e)',
-              color: 'white', border: 'none', borderRadius: '16px',
-              fontSize: '16px', fontWeight: '700', cursor: 'pointer',
-              fontFamily: 'Sora, sans-serif', transition: 'transform 0.2s',
-              letterSpacing: '0.5px', marginBottom: '32px'
-            }}
-            onMouseOver={e => e.target.style.transform = 'translateY(-2px)'}
-            onMouseOut={e => e.target.style.transform = 'translateY(0)'}
-          >
+          {/* Continue */}
+          <button onClick={handleContinue}
+            className="w-full py-5 rounded-2xl text-white font-bold text-base border-none cursor-pointer transition-all duration-200 hover:-translate-y-0.5 mb-8"
+            style={{background:'linear-gradient(135deg, #0f4c81, #1a7a6e)', fontFamily:"'Sora', sans-serif", boxShadow:'0 8px 24px rgba(15,76,129,0.3)'}}>
             Continue →
           </button>
-
         </div>
       </div>
     </div>
