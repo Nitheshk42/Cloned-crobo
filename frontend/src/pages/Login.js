@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import { loginUser, googleAuth, setAccessToken } from '../services/api';
+import { useLocation } from 'react-router-dom';
 
 // ─── ANIMATIONS ──────────────────────────────────────────────
 const styles = `
@@ -102,6 +103,13 @@ function Login() {
     fetchRates();
   }, []);
 
+  const location = useLocation();
+useEffect(() => {
+  if (location.state?.openLogin) {
+    setShowForm(true);
+  }
+}, [location]);
+
   const handleLogin = async () => {
     try {
       setError(''); setLoading(true);
@@ -144,8 +152,8 @@ function Login() {
           style={{background:'rgba(6,15,30,0.7)', backdropFilter:'blur(20px)', borderBottom:'1px solid rgba(255,255,255,0.06)'}}>
 
           <div onClick={() => setShowForm(false)} className="cursor-pointer">
-            <h1 className="text-xl md:text-2xl font-black text-white m-0" style={{letterSpacing:'-0.5px'}}>🌍 Crobo</h1>
-            <p className="hidden sm:block text-xs m-0" style={{color:'rgba(255,255,255,0.35)', letterSpacing:'2px', textTransform:'uppercase'}}>Send Money. Make Happy.</p>
+            <h1 className="text-xl md:text-2xl font-black text-white m-0" style={{letterSpacing:'-0.5px'}}>🌍 BondPay</h1>
+            <p className="hidden sm:block text-xs m-0" style={{color:'rgba(255,255,255,0.35)', letterSpacing:'2px', textTransform:'uppercase'}}>Money that keeps people connected.</p>
           </div>
 
           <div className="flex gap-2 md:gap-3 items-center">
@@ -257,7 +265,7 @@ function Login() {
                     className="inline-flex items-center gap-2 rounded-full px-4 py-2 cursor-pointer transition-all duration-300 border-none swap-pulse"
                     style={{background:'rgba(78,205,196,0.1)', border:'1px solid rgba(78,205,196,0.3)'}}>
                     <span style={{color:'#4ecdc4', fontSize:'18px', display:'inline-block', transition:'transform 0.3s', transform: swapped ? 'rotate(180deg)' : 'rotate(0deg)'}}>⇅</span>
-                    <span className="text-xs font-bold uppercase tracking-widest" style={{color:'#4ecdc4'}}>Swap</span>
+                    <span className="text-xs font-bold uppercase tracking-widest" style={{color:'#4ecdc4'}}></span>
                   </button>
                 </div>
 
@@ -299,7 +307,7 @@ function Login() {
                     Fee Comparison
                   </p>
                   {[
-                    {name:'🌍 Crobo', fee:'$0.99', color:'#4ecdc4', best:true},
+                    {name:'🌍 BondPay', fee:'$0.99', color:'#4ecdc4', best:true},
                     {name:'🏦 Banks', fee:'$25+', color:'rgba(255,255,255,0.3)', best:false},
                     {name:'💸 Western Union', fee:'$15+', color:'rgba(255,255,255,0.3)', best:false},
                   ].map(item => (
@@ -402,7 +410,7 @@ function Login() {
                   </div>
 
                   <p className="text-center text-sm m-0" style={{color:'#999'}}>
-                    New to Crobo?{' '}
+                    New to BondPay?{' '}
                     <span onClick={() => navigate('/signup')} className="font-bold cursor-pointer" style={{color:'#0f4c81'}}>
                       Create account →
                     </span>

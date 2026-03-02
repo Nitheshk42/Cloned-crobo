@@ -32,7 +32,7 @@ function registerValidSW(swUrl, config) {
             console.log('New content available!');
             if (config && config.onUpdate) config.onUpdate(registration);
           } else {
-            console.log('Crobo is ready for offline use!');
+            console.log('BondPay is ready for offline use!');
             if (config && config.onSuccess) config.onSuccess(registration);
           }
         }

@@ -76,7 +76,7 @@ const MobileTheme1 = ({ user, balance, limits, rates, loading, lastUpdated, curr
     <div className="relative z-10 px-5 pt-12 pb-6">
       <div className="flex justify-between items-start">
         <div className="fade-in">
-          <p className="text-xs font-bold uppercase tracking-widest m-0" style={{color:'#4ecdc4'}}>🌍 Crobo</p>
+          <p className="text-xs font-bold uppercase tracking-widest m-0" style={{color:'#4ecdc4'}}>🌍 BondPay</p>
           <h1 className="font-extrabold text-white mt-1 m-0" style={{fontSize:'clamp(22px, 5vw, 28px)'}}>
             Good {new Date().getHours() < 12 ? 'morning' : new Date().getHours() < 17 ? 'afternoon' : 'evening'} 👋
           </h1>
@@ -218,7 +218,7 @@ const MobileTheme2 = ({ user, balance, limits, rates, loading, lastUpdated, curr
         style={{backgroundImage:'radial-gradient(circle at 30% 50%, white 1px, transparent 1px)', backgroundSize:'30px 30px'}}/>
       <div className="flex justify-between items-start relative z-10">
         <div>
-          <p className="text-xs font-bold uppercase tracking-widest m-0" style={{color:'rgba(255,255,255,0.7)'}}>🌍 Crobo</p>
+          <p className="text-xs font-bold uppercase tracking-widest m-0" style={{color:'rgba(255,255,255,0.7)'}}>🌍 BondPay</p>
           <h1 className="font-extrabold text-white mt-1 m-0" style={{fontSize:'clamp(20px, 5vw, 26px)'}}>
             {new Date().getHours() < 12 ? 'Good morning' : new Date().getHours() < 17 ? 'Good afternoon' : 'Good evening'} 👋
           </h1>
@@ -355,7 +355,7 @@ const MobileTheme3 = ({ user, balance, limits, rates, loading, lastUpdated, curr
     {/* Header */}
     <div className="relative z-10 px-5 pt-12 pb-4 flex justify-between items-center">
       <div>
-        <h1 className="font-black text-white m-0" style={{fontSize:'24px', letterSpacing:'-0.5px'}}>🌍 Crobo</h1>
+        <h1 className="font-black text-white m-0" style={{fontSize:'24px', letterSpacing:'-0.5px'}}>🌍 BondPay</h1>
         <p className="text-xs m-0 mt-0.5" style={{color:'rgba(255,255,255,0.35)', letterSpacing:'2px', textTransform:'uppercase'}}>Send Money. Make Happy.</p>
       </div>
       <div className="relative">
@@ -486,7 +486,7 @@ const DesktopDashboard = ({ user, balance, limits, rates, loading, lastUpdated, 
       <div className="max-w-6xl mx-auto px-8 py-6">
         <div className="flex justify-between items-center">
           <div>
-            <p className="text-2xl font-extrabold text-white m-0" style={{letterSpacing:'-0.5px'}}>🌍 Crobo</p>
+            <p className="text-2xl font-extrabold text-white m-0" style={{letterSpacing:'-0.5px'}}>🌍 BondPay</p>
             <p className="text-xs mt-1 m-0" style={{color:'rgba(255,255,255,0.7)'}}>Welcome back 👋</p>
             <h1 className="text-xl font-bold text-white mt-0.5 m-0">{user?.name || 'Loading...'}</h1>
           </div>
@@ -615,7 +615,7 @@ const DesktopDashboard = ({ user, balance, limits, rates, loading, lastUpdated, 
 
       {/* Footer */}
       <div className="mt-6 bg-white rounded-3xl px-8 py-6 flex flex-wrap justify-between items-center gap-4" style={{boxShadow:'0 4px 20px rgba(0,0,0,0.06)'}}>
-        <div><p className="font-bold text-base m-0" style={{color:'#1a1a2e'}}>🌍 Crobo</p><p className="text-sm mt-1 m-0" style={{color:'#888'}}>Send money globally, effortlessly.</p></div>
+        <div><p className="font-bold text-base m-0" style={{color:'#1a1a2e'}}>🌍 BondPay</p><p className="text-sm mt-1 m-0" style={{color:'#888'}}>Send money globally, effortlessly.</p></div>
         <div className="text-center"><p className="text-sm m-0" style={{color:'#888'}}>Write to us</p><p className="font-semibold text-sm m-0" style={{color:'#0f4c81'}}>support@crobo.com</p></div>
         <div className="flex items-center gap-5">
           <FaLinkedin size={24} style={{color:'#0077b5', cursor:'pointer'}} onClick={() => window.open('#', '_blank')}/>

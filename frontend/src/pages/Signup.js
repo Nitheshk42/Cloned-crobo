@@ -99,11 +99,11 @@ function Signup() {
       <nav className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-5 md:px-12 py-4"
         style={{background:'rgba(6,15,30,0.7)', backdropFilter:'blur(20px)', borderBottom:'1px solid rgba(255,255,255,0.06)'}}>
         <div onClick={() => navigate('/')} className="cursor-pointer">
-          <h1 className="text-xl md:text-2xl font-black text-white m-0" style={{letterSpacing:'-0.5px'}}>🌍 Crobo</h1>
-          <p className="hidden sm:block text-xs m-0" style={{color:'rgba(255,255,255,0.35)', letterSpacing:'2px', textTransform:'uppercase'}}>Send Money. Make Happy.</p>
+          <h1 className="text-xl md:text-2xl font-black text-white m-0" style={{letterSpacing:'-0.5px'}}>🌍 BondPay</h1>
+          <p className="hidden sm:block text-xs m-0" style={{color:'rgba(255,255,255,0.35)', letterSpacing:'2px', textTransform:'uppercase'}}>Money That Keeps People Connected</p>
         </div>
         <div className="flex gap-2 md:gap-3 items-center">
-          <button onClick={() => navigate('/')}
+          <button onClick={() => navigate('/', {state: {openLogin: true}})}
             className="text-white text-sm font-semibold px-4 md:px-6 py-2 rounded-xl transition-all duration-200 hover:bg-white/10"
             style={{background:'transparent', border:'1.5px solid rgba(255,255,255,0.25)'}}>
             Login
@@ -123,7 +123,7 @@ function Signup() {
                 style={{background:'rgba(78,205,196,0.1)', border:'1px solid rgba(78,205,196,0.25)'}}>
                 <div className="w-1.5 h-1.5 rounded-full" style={{background:'#4ecdc4', boxShadow:'0 0 6px #4ecdc4'}}/>
                 <span className="text-xs font-bold uppercase tracking-widest" style={{color:'#4ecdc4'}}>
-                  Join Crobo today
+                  Join BondPay today
                 </span>
               </div>
               <h2 className="font-black text-2xl md:text-3xl m-0" style={{color:'#0f1f3a'}}>Create your account 🚀</h2>
@@ -208,7 +208,7 @@ function Signup() {
             {/* Login Link */}
             <p className="text-center text-sm m-0" style={{color:'#999'}}>
               Already have an account?{' '}
-              <span onClick={() => navigate('/')} className="font-bold cursor-pointer" style={{color:'#0f4c81'}}>
+              <span onClick={() => navigate('/', {state: {openLogin: true}})} className="font-bold cursor-pointer" style={{color:'#0f4c81'}}>
                 Login →
               </span>
             </p>

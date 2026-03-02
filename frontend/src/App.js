@@ -13,6 +13,7 @@ function App() {
     <HashRouter>
       <Routes>
         <Route path="/" element={<Login />} />
+        <Route path="/login" element={<Login />} />  {/* ← add this */}
         <Route path="/signup" element={<Signup />} />
        <Route path="/dashboard" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} />
         <Route path="/send" element={<ProtectedRoute><SendMoney /></ProtectedRoute>} />
