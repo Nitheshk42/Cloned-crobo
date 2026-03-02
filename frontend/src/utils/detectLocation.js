@@ -11,6 +11,8 @@ const countryCurrencyMap = {
 };
 
 export const detectUserCurrency = async () => {
+     const cached = localStorage.getItem('userCurrency');
+  if (cached) return JSON.parse(cached);
   try {
             const res = await fetch('https://ipapi.co/json/', { signal: AbortSignal.timeout(4000) });
             const data = await res.json();

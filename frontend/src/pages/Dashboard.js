@@ -94,6 +94,10 @@ const MobileTheme1 = ({ user, balance, limits, rates, loading, lastUpdated, curr
               <p className="font-bold text-base m-0 text-white">{user?.name}</p>
               <p className="text-xs m-0 mt-0.5" style={{color:'rgba(255,255,255,0.5)'}}>{user?.email}</p>
               <hr className="my-3" style={{borderColor:'rgba(255,255,255,0.1)'}}/>
+              <button onClick={() => navigate('/faq')}
+              className="w-full py-2.5 rounded-xl font-bold text-sm border-none cursor-pointer mb-2 bg-teal-500/10 text-teal-400">
+              ❓ FAQ
+            </button>
               <button onClick={async () => { await logoutUser(); clearAccessToken(); localStorage.removeItem('user'); navigate('/'); }}
                 className="w-full py-2.5 rounded-xl font-bold text-sm border-none cursor-pointer"
                 style={{background:'rgba(231,76,60,0.15)', color:'#e74c3c'}}>
@@ -236,6 +240,10 @@ const MobileTheme2 = ({ user, balance, limits, rates, loading, lastUpdated, curr
               <p className="font-bold text-base m-0" style={{color:'#1a1a2e'}}>{user?.name}</p>
               <p className="text-xs m-0 mt-0.5" style={{color:'#888'}}>{user?.email}</p>
               <hr className="my-3" style={{borderColor:'#f0f0f0'}}/>
+              <button onClick={() => navigate('/faq')}
+                className="w-full py-2.5 rounded-xl font-bold text-sm border-none cursor-pointer mb-2 bg-teal-500/10 text-teal-400">
+                ❓ FAQ
+              </button>
               <button onClick={async () => { await logoutUser(); clearAccessToken(); localStorage.removeItem('user'); navigate('/'); }}
                 className="w-full py-2.5 rounded-xl font-bold text-sm border-none cursor-pointer"
                 style={{background:'#fff0f0', color:'#e74c3c'}}>
@@ -370,6 +378,10 @@ const MobileTheme3 = ({ user, balance, limits, rates, loading, lastUpdated, curr
             <p className="font-bold text-sm m-0 text-white">{user?.name}</p>
             <p className="text-xs m-0 mt-0.5" style={{color:'rgba(255,255,255,0.4)'}}>{user?.email}</p>
             <div className="my-3 h-px" style={{background:'rgba(255,255,255,0.1)'}}/>
+            <button onClick={() => navigate('/faq')}
+                className="w-full py-2.5 rounded-xl font-bold text-sm border-none cursor-pointer mb-2 bg-teal-500/10 text-teal-400">
+                ❓ FAQ
+              </button>
             <button onClick={async () => { await logoutUser(); clearAccessToken(); localStorage.removeItem('user'); navigate('/'); }}
               className="w-full py-2.5 rounded-xl font-bold text-xs border-none cursor-pointer"
               style={{background:'rgba(231,76,60,0.15)', color:'#e74c3c', fontFamily:"'Sora', sans-serif"}}>
@@ -617,6 +629,13 @@ const DesktopDashboard = ({ user, balance, limits, rates, loading, lastUpdated, 
       <div className="mt-6 bg-white rounded-3xl px-8 py-6 flex flex-wrap justify-between items-center gap-4" style={{boxShadow:'0 4px 20px rgba(0,0,0,0.06)'}}>
         <div><p className="font-bold text-base m-0" style={{color:'#1a1a2e'}}>🌍 Draviṇa</p><p className="text-sm mt-1 m-0" style={{color:'#888'}}>Send money globally, effortlessly.</p></div>
         <div className="text-center"><p className="text-sm m-0" style={{color:'#888'}}>Write to us</p><p className="font-semibold text-sm m-0" style={{color:'#0f4c81'}}>support@crobo.com</p></div>
+        <div className="text-center">
+        <p className="text-sm m-0 text-gray-400">Help Center</p>
+        <p onClick={() => navigate('/faq')}
+          className="font-semibold text-sm m-0 cursor-pointer hover:underline text-blue-700">
+          ❓ FAQ →
+        </p>
+      </div>
         <div className="flex items-center gap-5">
           <FaLinkedin size={24} style={{color:'#0077b5', cursor:'pointer'}} onClick={() => window.open('#', '_blank')}/>
           <FaTwitter size={24} style={{color:'#1da1f2', cursor:'pointer'}} onClick={() => window.open('#', '_blank')}/>

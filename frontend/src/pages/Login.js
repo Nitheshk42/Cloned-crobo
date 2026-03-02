@@ -5,6 +5,7 @@ import { loginUser, googleAuth, setAccessToken } from '../services/api';
 import { useLocation } from 'react-router-dom';
 import { detectUserCurrency } from '../utils/detectLocation';
 
+
 // ─── ANIMATIONS ──────────────────────────────────────────────
 const styles = `
   @keyframes dash { to { stroke-dashoffset: -100; } }
@@ -18,7 +19,9 @@ const styles = `
   input[type=number]::-webkit-inner-spin-button,
   input[type=number]::-webkit-outer-spin-button { -webkit-appearance: none; }
   select option { background: #0f2d4a; }
+  @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 `;
+
 
 // ─── WORLD MAP BACKGROUND ────────────────────────────────────
 const WorldMapBackground = () => (
@@ -90,6 +93,8 @@ function Login() {
   const [rates, setRates] = useState({});
   const [ratesLoading, setRatesLoading] = useState(true);
   const [locationDetected, setLocationDetected] = useState(false);
+  const [locationLoading, setLocationLoading] = useState(true);
+
 
   useEffect(() => {
     const fetchRates = async () => {
@@ -115,9 +120,11 @@ useEffect(() => {
 // Detect location and set fromCurrency
 useEffect(() => {
   const detect = async () => {
+    setLocationLoading(true);
     const detected = await detectUserCurrency();
     setFromCurrency(detected);
     setLocationDetected(true);
+    setLocationLoading(false);
   };
   detect();
 }, []);
@@ -159,6 +166,23 @@ useEffect(() => {
       <div className="min-h-screen relative" style={{fontFamily:"'Sora', sans-serif"}}>
         <WorldMapBackground />
 
+        {/* ── LOADING ── */}
+        {locationLoading && (
+          <div className="fixed inset-0 flex flex-col items-center justify-center z-50"
+            style={{background:'linear-gradient(135deg, #0f4c81, #1a7a6e)'}}>
+            <div className="w-16 h-16 rounded-full mb-6"
+              style={{
+                border:'4px solid rgba(255,255,255,0.2)',
+                borderTop:'4px solid white',
+                animation:'spin 1s linear infinite'
+              }}/>
+            <p className="text-5xl mb-3">🌍</p>
+            <p className="text-white font-bold text-lg mb-2">Welcome to Draviṇa</p>
+            <p className="text-sm" style={{color:'rgba(255,255,255,0.6)'}}>Getting best rates for you...</p>
+            
+          </div>
+        )}
+
         {/* ── NAVBAR ── */}
         <nav className="fixed top-0 left-0 right-0 z-50 flex justify-between items-center px-5 md:px-12 py-4"
           style={{background:'rgba(6,15,30,0.7)', backdropFilter:'blur(20px)', borderBottom:'1px solid rgba(255,255,255,0.06)'}}>
@@ -179,8 +203,15 @@ useEffect(() => {
               style={{background:'linear-gradient(135deg, #0f4c81, #1a7a6e)', boxShadow:'0 4px 16px rgba(15,76,129,0.4)'}}>
               Sign Up →
             </button>
+            <button onClick={() => navigate('/faq')}
+              className="text-white text-sm font-semibold px-4 md:px-6 py-2 rounded-xl transition-all duration-200 hover:bg-white/10"
+              style={{background:'transparent', border:'1.5px solid rgba(255,255,255,0.25)'}}>
+              FAQ
+            </button>
           </div>
         </nav>
+
+
 
         {/* ── MAIN CONTENT ── */}
         <div className="min-h-screen flex flex-col lg:flex-row items-center relative z-10 px-5 md:px-12 lg:px-20 pt-24 pb-10 gap-8 lg:gap-16">
@@ -339,6 +370,9 @@ useEffect(() => {
                 </div>
               </div>
 
+                  
+
+
             ) : (
               /* ── LOGIN FORM ── */
               <div className="slide-in">
@@ -432,7 +466,7 @@ useEffect(() => {
             )}
           </div>
         </div>
-      </div>
+     </div>
     </GoogleOAuthProvider>
   );
 }

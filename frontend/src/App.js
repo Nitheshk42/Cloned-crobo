@@ -7,6 +7,7 @@ import Confirm from './pages/Confirm';
 import History from './pages/History';
 import ProtectedRoute from './components/ProtectedRoute';
 import Recipients from './pages/Recipients';
+import FQQ from './pages/FAQ';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/confirm" element={<ProtectedRoute><Confirm /></ProtectedRoute>} />
         <Route path="/history" element={<ProtectedRoute><History /></ProtectedRoute>} />
         <Route path="/recipients" element={<ProtectedRoute><Recipients /></ProtectedRoute>} />
+        <Route path="/faq" element={<FQQ />} />
       </Routes>
     </HashRouter>
   );
