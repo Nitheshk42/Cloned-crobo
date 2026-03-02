@@ -17,21 +17,30 @@ if (process.env.NODE_ENV === 'production') {
     console.log(`🚀 Server running on port ${PORT}`);
   });
 } else {
-  const https = require('https');
-  const fs = require('fs');
-  const path = require('path');
-
-  const options = {
-    cert: fs.readFileSync(path.join(__dirname, '../../../certs/localhost.crt')),
-    key: fs.readFileSync(path.join(__dirname, '../../../certs/localhost.key'))
-  };
-
-  https.createServer(options, app).listen(PORT, () => {
-    logger.info('🔒 HTTPS Server running locally', {
-      url: `https://localhost:${PORT}`,
-      swagger: `https://localhost:${PORT}/api-docs`
+  app.listen(PORT, () => {
+    logger.info('🚀 HTTP Server running locally', {
+      url: `http://localhost:${PORT}`,
+      swagger: `http://localhost:${PORT}/api-docs`
     });
-    console.log(`🔒 HTTPS Server running on https://localhost:${PORT}`);
-    console.log(`📚 Swagger docs at https://localhost:${PORT}/api-docs`);
+    console.log(`🚀 HTTP Server running on http://localhost:${PORT}`);
+    console.log(`📚 Swagger docs at http://localhost:${PORT}/api-docs`);
   });
 }
+  // const https = require('https');
+  // const fs = require('fs');
+  // const path = require('path');
+
+  // const options = {
+  //   cert: fs.readFileSync(path.join(__dirname, '../../../certs/localhost.crt')),
+  //   key: fs.readFileSync(path.join(__dirname, '../../../certs/localhost.key'))
+  // };
+
+  // https.createServer(options, app).listen(PORT, () => {
+  //   logger.info('🔒 HTTPS Server running locally', {
+  //     url: `https://localhost:${PORT}`,
+  //     swagger: `https://localhost:${PORT}/api-docs`
+  //   });
+  //   console.log(`🔒 HTTPS Server running on https://localhost:${PORT}`);
+  //   console.log(`📚 Swagger docs at https://localhost:${PORT}/api-docs`);
+  // });
+//}

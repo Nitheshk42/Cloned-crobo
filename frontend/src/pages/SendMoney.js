@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { getRecipients } from '../services/api';
 import WorldMap from '../components/WorldMap';
+import { detectUserCurrency } from '../utils/detectLocation';
+
 
 const FLAT_FEE = 0.99;
 
@@ -20,11 +22,16 @@ const countries = [
   { code:'AED', name:'UAE', flag:'🇦🇪', currency:'UAE Dirham', delivery:'Instant' },
 ];
 
+const currencies = [
+  {code:'USD',flag:'🇺🇸'},{code:'INR',flag:'🇮🇳'},{code:'GBP',flag:'🇬🇧'},
+  {code:'EUR',flag:'🇪🇺'},{code:'AUD',flag:'🇦🇺'},{code:'CAD',flag:'🇨🇦'},
+  {code:'SGD',flag:'🇸🇬'},{code:'AED',flag:'🇦🇪'},
+];
+
 function SendMoney() {
   const navigate = useNavigate();
   const location = useLocation();
   const preselectedRecipient = location.state?.recipient || null;
-
   const [amount, setAmount] = useState('');
   const [selectedCountry, setSelectedCountry] = useState(countries[0]);
   const [rates, setRates] = useState({});
@@ -32,6 +39,16 @@ function SendMoney() {
   const [apiStatus, setApiStatus] = useState('Getting best exchange rates for you...');
   const [selectedRecipient, setSelectedRecipient] = useState(preselectedRecipient);
   const [recipients, setRecipients] = useState([]);
+  const [ userCurrencyCode, setUserCurrencyCode ] = useState('USD');
+
+// 3. Add useEffect inside SendMoney function
+useEffect(() => {
+  const detect = async () => {
+    const detected = await detectUserCurrency();
+    setUserCurrencyCode(detected.code);
+  };
+  detect();
+}, []);
 
   useEffect(() => {
     const fetchRates = async () => {
@@ -167,8 +184,10 @@ function SendMoney() {
           <div className="bg-white rounded-2xl p-5" style={{boxShadow:'0 4px 20px rgba(0,0,0,0.06)'}}>
             <label className="text-xs font-semibold uppercase tracking-widest" style={{color:'#888'}}>You Send</label>
             <div className="flex items-center gap-3 rounded-2xl px-5 py-4 mt-2" style={{border:'2px solid #f0f0f0'}}>
-              <span className="text-2xl">🇺🇸</span>
-              <span className="font-bold text-base" style={{color:'#0f4c81'}}>USD</span>
+              <span className="text-2xl">
+                  {currencies.find(c => c.code === userCurrencyCode)?.flag || '🇺🇸'}
+                </span>
+                <span className="font-bold text-base" style={{color:'#0f4c81'}}>{userCurrencyCode}</span>
               <span style={{color:'#ddd', fontSize:'20px'}}>|</span>
               <input type="number" placeholder="Enter amount" value={amount}
                 onChange={e => setAmount(e.target.value)}

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
 import { loginUser, googleAuth, setAccessToken } from '../services/api';
 import { useLocation } from 'react-router-dom';
+import { detectUserCurrency } from '../utils/detectLocation';
 
 // ─── ANIMATIONS ──────────────────────────────────────────────
 const styles = `
@@ -88,6 +89,7 @@ function Login() {
   const [swapped, setSwapped] = useState(false);
   const [rates, setRates] = useState({});
   const [ratesLoading, setRatesLoading] = useState(true);
+  const [locationDetected, setLocationDetected] = useState(false);
 
   useEffect(() => {
     const fetchRates = async () => {
@@ -109,6 +111,16 @@ useEffect(() => {
     setShowForm(true);
   }
 }, [location]);
+
+// Detect location and set fromCurrency
+useEffect(() => {
+  const detect = async () => {
+    const detected = await detectUserCurrency();
+    setFromCurrency(detected);
+    setLocationDetected(true);
+  };
+  detect();
+}, []);
 
   const handleLogin = async () => {
     try {
@@ -152,8 +164,8 @@ useEffect(() => {
           style={{background:'rgba(6,15,30,0.7)', backdropFilter:'blur(20px)', borderBottom:'1px solid rgba(255,255,255,0.06)'}}>
 
           <div onClick={() => setShowForm(false)} className="cursor-pointer">
-            <h1 className="text-xl md:text-2xl font-black text-white m-0" style={{letterSpacing:'-0.5px'}}>🌍 BondPay</h1>
-            <p className="hidden sm:block text-xs m-0" style={{color:'rgba(255,255,255,0.35)', letterSpacing:'2px', textTransform:'uppercase'}}>Money that keeps people connected.</p>
+            <h1 className="text-xl md:text-2xl font-black text-white m-0" style={{letterSpacing:'-0.5px'}}>🌍 Draviṇa</h1>
+            <p className="hidden sm:block text-xs m-0" style={{color:'rgba(255,255,255,0.35)', letterSpacing:'2px', textTransform:'uppercase'}}>Transfer Money, Across Worlds</p>
           </div>
 
           <div className="flex gap-2 md:gap-3 items-center">
@@ -307,7 +319,7 @@ useEffect(() => {
                     Fee Comparison
                   </p>
                   {[
-                    {name:'🌍 BondPay', fee:'$0.99', color:'#4ecdc4', best:true},
+                    {name:'🌍 Draviṇa', fee:'$0.99', color:'#4ecdc4', best:true},
                     {name:'🏦 Banks', fee:'$25+', color:'rgba(255,255,255,0.3)', best:false},
                     {name:'💸 Western Union', fee:'$15+', color:'rgba(255,255,255,0.3)', best:false},
                   ].map(item => (
@@ -410,7 +422,7 @@ useEffect(() => {
                   </div>
 
                   <p className="text-center text-sm m-0" style={{color:'#999'}}>
-                    New to BondPay?{' '}
+                    New to Draviṇa?{' '}
                     <span onClick={() => navigate('/signup')} className="font-bold cursor-pointer" style={{color:'#0f4c81'}}>
                       Create account →
                     </span>
