@@ -8,6 +8,7 @@ import History from './pages/History';
 import ProtectedRoute from './components/ProtectedRoute';
 import Recipients from './pages/Recipients';
 import FQQ from './pages/FAQ';
+import MyAccounts from './pages/MyAccounts';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route path="/history" element={<ProtectedRoute><History /></ProtectedRoute>} />
         <Route path="/recipients" element={<ProtectedRoute><Recipients /></ProtectedRoute>} />
         <Route path="/faq" element={<FQQ />} />
+        <Route path="/accounts" element={<ProtectedRoute><MyAccounts /></ProtectedRoute>} />
       </Routes>
     </HashRouter>
   );

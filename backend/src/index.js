@@ -1,11 +1,15 @@
 const app = require('./app');
 const logger = require('./logger');
+const { connectCassandra } = require('../config/cassandra'); 
 require('dotenv').config();
 
 const PORT = process.env.PORT || 5001;
 
 // Log startup
 logger.info('🚀 Backend starting', { port: PORT, env: process.env.NODE_ENV });
+
+// Connect Cassandra ← add this
+connectCassandra();
 
 // Use HTTP on production (Render handles SSL)
 // Use HTTPS on local (self signed cert)

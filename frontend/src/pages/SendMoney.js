@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { getRecipients } from '../services/api';
+import { getRecipients, getAccounts, getRates } from '../services/api';
 import WorldMap from '../components/WorldMap';
 import { detectUserCurrency } from '../utils/detectLocation';
+
 
 
 const FLAT_FEE = 0.99;
@@ -40,6 +41,8 @@ function SendMoney() {
   const [selectedRecipient, setSelectedRecipient] = useState(preselectedRecipient);
   const [recipients, setRecipients] = useState([]);
   const [ userCurrencyCode, setUserCurrencyCode ] = useState('USD');
+  const [accounts, setAccounts] = useState([]);
+  const [ selectedAccount, setSelectedAccount ] = useState(null);
 
 // 3. Add useEffect inside SendMoney function
 useEffect(() => {
@@ -50,38 +53,32 @@ useEffect(() => {
   detect();
 }, []);
 
+// Add useEffect
+useEffect(() => {
+  const fetchAccounts = async () => {
+    try {
+      const response = await getAccounts();
+      setAccounts(response.data.accounts || []);
+    } catch {}
+  };
+  fetchAccounts();
+}, []);
+
   useEffect(() => {
-    const fetchRates = async () => {
-      try {
-        setApiStatus('Getting best exchange rates for you...');
-        const response = await fetch('https://api.frankfurter.app/latest?from=USD&to=GBP,EUR,INR,AUD,CAD,SGD,AED', { signal: AbortSignal.timeout(5000) });
-        if (!response.ok) throw new Error('failed');
-        const data = await response.json();
-        setRates(data.rates); setLoading(false); return;
-      } catch {}
-      try {
-        setApiStatus('Checking backup rate provider...');
-        const response = await fetch('https://open.er-api.com/v6/latest/USD', { signal: AbortSignal.timeout(5000) });
-        if (!response.ok) throw new Error('failed');
-        const data = await response.json();
-        const { GBP, EUR, INR, AUD, CAD, SGD, AED } = data.rates;
-        setRates({ GBP, EUR, INR, AUD, CAD, SGD, AED }); setLoading(false); return;
-      } catch {}
-      try {
-        setApiStatus('Almost there...');
-        const response = await fetch('https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies/usd.json', { signal: AbortSignal.timeout(5000) });
-        if (!response.ok) throw new Error('failed');
-        const data = await response.json();
-        const r = data.usd;
-        setRates({ GBP:r.gbp, EUR:r.eur, INR:r.inr, AUD:r.aud, CAD:r.cad, SGD:r.sgd, AED:r.aed });
-        setLoading(false); return;
-      } catch {}
+  const fetchRates = async () => {
+    try {
+      setApiStatus('Getting best exchange rates for you...');
+      const response = await getRates();
+      setRates(response.data.rates);
+    } catch {
       setApiStatus('Using cached rates');
-      setRates({ GBP:0.79, EUR:0.92, INR:83.12, AUD:1.53, CAD:1.36, SGD:1.34, AED:3.67 });
+      setRates({ GBP:0.79, EUR:0.92, INR:83.12, AUD:1.53, CAD:1.36, SGD:1.34, AED:3.67, USD:1 });
+    } finally {
       setLoading(false);
-    };
-    fetchRates();
-  }, []);
+    }
+  };
+  fetchRates();
+}, []);
 
   useEffect(() => {
     const fetchRecipients = async () => {
@@ -104,14 +101,16 @@ useEffect(() => {
     if (!amount || amountNumber <= FLAT_FEE) {
       alert(`Amount must be greater than $${FLAT_FEE} to cover the fee!`); return;
     }
-    navigate('/confirm', {
-      state: {
-        amount: amountNumber, fee: FLAT_FEE,
-        amountAfterFee: amountAfterFee.toFixed(2),
-        recipientGets, exchangeRate,
-        country: selectedCountry, recipient: selectedRecipient,
-      }
-    });
+  navigate('/confirm', {
+  state: {
+    amount: amountNumber, fee: FLAT_FEE,
+    amountAfterFee: amountAfterFee.toFixed(2),
+    recipientGets, exchangeRate,
+    country: selectedCountry,
+    recipient: selectedRecipient,
+    account: selectedAccount, 
+  }
+});
   };
 
   return (
@@ -154,30 +153,60 @@ useEffect(() => {
         {/* Form */}
         <div className="flex flex-col gap-4">
 
-          {/* Recipient */}
-          <div className="bg-white rounded-2xl p-5" style={{boxShadow:'0 4px 20px rgba(0,0,0,0.06)'}}>
-            <p className="font-bold text-base m-0 mb-3" style={{color:'#1a1a2e'}}>👤 Send To</p>
-            <select value={selectedRecipient?.id || ''}
-              onChange={e => setSelectedRecipient(recipients.find(r => r.id === e.target.value) || null)}
-              className="w-full px-4 py-3 rounded-xl text-sm outline-none mb-3"
-              style={{border:'2px solid #e0e0e0', color:'#1a1a2e', fontFamily:"'Sora', sans-serif", boxSizing:'border-box'}}>
-              <option value="">Select a recipient...</option>
-              {recipients.map(r => <option key={r.id} value={r.id}>{r.fullName} — {r.country}</option>)}
-            </select>
+          {/* ── RECIPIENT + BANK ACCOUNT SIDE BY SIDE ── */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
 
-            {selectedRecipient && (
-              <div className="rounded-2xl p-4 flex items-center gap-3" style={{background:'#f0f7ff'}}>
-                <div className="w-11 h-11 rounded-full flex items-center justify-center text-white font-bold flex-shrink-0"
-                  style={{background:'linear-gradient(135deg, #0f4c81, #1a7a6e)'}}>
-                  {selectedRecipient.fullName.charAt(0).toUpperCase()}
+            {/* Send To */}
+            <div className="bg-white rounded-2xl p-5" style={{boxShadow:'0 4px 20px rgba(0,0,0,0.06)'}}>
+              <p className="font-bold text-base m-0 mb-3" style={{color:'#1a1a2e'}}>👤 Send To</p>
+              <select value={selectedRecipient?.id || ''}
+                onChange={e => setSelectedRecipient(recipients.find(r => r.id === e.target.value) || null)}
+                className="w-full px-4 py-3 rounded-xl text-sm outline-none mb-3"
+                style={{border:'2px solid #e0e0e0', color:'#1a1a2e', fontFamily:"'Sora', sans-serif", boxSizing:'border-box'}}>
+                <option value="">Select a recipient...</option>
+                {recipients.map(r => <option key={r.id} value={r.id}>{r.fullName} — {r.country}</option>)}
+              </select>
+              {selectedRecipient && (
+                <div className="rounded-2xl p-4 flex items-center gap-3" style={{background:'#f0f7ff'}}>
+                  <div className="w-11 h-11 rounded-full flex items-center justify-center text-white font-bold flex-shrink-0"
+                    style={{background:'linear-gradient(135deg, #0f4c81, #1a7a6e)'}}>
+                    {selectedRecipient.fullName.charAt(0).toUpperCase()}
+                  </div>
+                  <div>
+                    <p className="font-bold text-sm m-0" style={{color:'#1a1a2e'}}>{selectedRecipient.fullName}</p>
+                    <p className="text-xs m-0 mt-0.5" style={{color:'#888'}}>{selectedRecipient.country} · {selectedRecipient.bankAccount}</p>
+                  </div>
                 </div>
-                <div>
-                  <p className="font-bold text-sm m-0" style={{color:'#1a1a2e'}}>{selectedRecipient.fullName}</p>
-                  <p className="text-xs m-0 mt-0.5" style={{color:'#888'}}>{selectedRecipient.country} · {selectedRecipient.bankAccount} · {selectedRecipient.ifscCode}</p>
-                  <p className="text-xs font-semibold m-0 mt-0.5" style={{color:'#0f4c81'}}>{selectedRecipient.transferringTo}</p>
+              )}
+            </div>
+
+            {/* From Account */}
+            <div className="bg-white rounded-2xl p-5" style={{boxShadow:'0 4px 20px rgba(0,0,0,0.06)'}}>
+              <p className="font-bold text-base m-0 mb-3" style={{color:'#1a1a2e'}}>🏦 From Account</p>
+              <select value={selectedAccount?.account_id || ''}
+                onChange={e => setSelectedAccount(accounts.find(a => a.account_id === e.target.value) || null)}
+                className="w-full px-4 py-3 rounded-xl text-sm outline-none mb-3"
+                style={{border:'2px solid #e0e0e0', color:'#1a1a2e', fontFamily:"'Sora', sans-serif", boxSizing:'border-box'}}>
+                <option value="">Select an account...</option>
+                {accounts.map(a => <option key={a.account_id} value={a.account_id}>
+                  {a.bank_name} — {a.account_type}
+                </option>)}
+              </select>
+              {selectedAccount && (
+                <div className="rounded-2xl p-4 flex items-center gap-3" style={{background:'#f0f7ff'}}>
+                  <div className="w-11 h-11 rounded-full flex items-center justify-center text-white font-bold flex-shrink-0"
+                    style={{background:'linear-gradient(135deg, #0f4c81, #1a7a6e)'}}>
+                    🏦
+                  </div>
+                  <div>
+                    <p className="font-bold text-sm m-0" style={{color:'#1a1a2e'}}>{selectedAccount.bank_name}</p>
+                    <p className="text-xs m-0 mt-0.5" style={{color:'#888'}}>
+                      {selectedAccount.account_type} · {'*'.repeat(4)}{selectedAccount.account_no?.slice(-4)}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            )}
+              )}
+            </div>
           </div>
 
           {/* You Send */}
@@ -249,5 +278,6 @@ useEffect(() => {
     </div>
   );
 }
+
 
 export default SendMoney;

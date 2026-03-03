@@ -114,4 +114,13 @@ export const addRecipient = (data) => API.post('/recipient', data);
 export const deleteRecipient = (id) => API.delete(`/recipient/${id}`);
 export const updateRecipient = (id, data) => API.put(`/recipient/${id}`, data);
 
+// ─── ACCOUNTS ───────────────────────────────────────────────
+export const getAccounts = () => API.get('/accounts');
+export const addAccount = (data) => API.post('/accounts', data);
+export const deleteAccount = (id) => API.delete(`/accounts/${id}`);
+
+// ─── UTILS ────────────────────────────────────────────────────
+export const getRates = () => API.get('/utils/rates');
+export const getUserLocation = () => API.get('/utils/location');
+
 export default API;

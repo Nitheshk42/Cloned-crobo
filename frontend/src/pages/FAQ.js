@@ -205,7 +205,7 @@ function FAQ() {
           <p className="hidden sm:block text-xs m-0" style={{color:'rgba(255,255,255,0.35)', letterSpacing:'2px', textTransform:'uppercase'}}>Transfer Money, Across Worlds.</p>
         </div>
         <div className="flex gap-2 md:gap-3 items-center">
-          <button onClick={() => navigate('/')}
+          <button onClick={() => navigate('/', {state: {openLogin: true}})}
             className="text-white text-sm font-semibold px-4 md:px-6 py-2 rounded-xl transition-all duration-200 hover:bg-white/10"
             style={{background:'transparent', border:'1.5px solid rgba(255,255,255,0.25)'}}>
             Login
