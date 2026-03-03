@@ -94,6 +94,10 @@ const MobileTheme1 = ({ user, balance, limits, rates, loading, lastUpdated, curr
               <p className="font-bold text-base m-0 text-white">{user?.name}</p>
               <p className="text-xs m-0 mt-0.5" style={{color:'rgba(255,255,255,0.5)'}}>{user?.email}</p>
               <hr className="my-3" style={{borderColor:'rgba(255,255,255,0.1)'}}/>
+              <button onClick={() => navigate('/accounts')}
+                  className="w-full py-2.5 rounded-xl font-bold text-sm border-none cursor-pointer mb-2 bg-teal-500/10 text-teal-400">
+                  🏦 Manage Bank Accounts
+                </button>
               <button onClick={() => navigate('/faq')}
               className="w-full py-2.5 rounded-xl font-bold text-sm border-none cursor-pointer mb-2 bg-teal-500/10 text-teal-400">
               ❓ FAQ
@@ -240,6 +244,10 @@ const MobileTheme2 = ({ user, balance, limits, rates, loading, lastUpdated, curr
               <p className="font-bold text-base m-0" style={{color:'#1a1a2e'}}>{user?.name}</p>
               <p className="text-xs m-0 mt-0.5" style={{color:'#888'}}>{user?.email}</p>
               <hr className="my-3" style={{borderColor:'#f0f0f0'}}/>
+              <button onClick={() => navigate('/accounts')}
+                className="w-full py-2.5 rounded-xl font-bold text-sm border-none cursor-pointer mb-2 bg-teal-500/10 text-teal-400">
+                🏦 Manage Bank Accounts
+              </button>
               <button onClick={() => navigate('/faq')}
                 className="w-full py-2.5 rounded-xl font-bold text-sm border-none cursor-pointer mb-2 bg-teal-500/10 text-teal-400">
                 ❓ FAQ
@@ -378,6 +386,10 @@ const MobileTheme3 = ({ user, balance, limits, rates, loading, lastUpdated, curr
             <p className="font-bold text-sm m-0 text-white">{user?.name}</p>
             <p className="text-xs m-0 mt-0.5" style={{color:'rgba(255,255,255,0.4)'}}>{user?.email}</p>
             <div className="my-3 h-px" style={{background:'rgba(255,255,255,0.1)'}}/>
+            <button onClick={() => navigate('/accounts')}
+              className="w-full py-2.5 rounded-xl font-bold text-sm border-none cursor-pointer mb-2 bg-teal-500/10 text-teal-400">
+              🏦 Manage Bank Accounts
+            </button>
             <button onClick={() => navigate('/faq')}
                 className="w-full py-2.5 rounded-xl font-bold text-sm border-none cursor-pointer mb-2 bg-teal-500/10 text-teal-400">
                 ❓ FAQ
@@ -543,6 +555,10 @@ const DesktopDashboard = ({ user, balance, limits, rates, loading, lastUpdated, 
                     <CircleProgress percentage={limits.weekly.percentage} color="#1a7a6e"/>
                   </div>
                 </div>
+                <button onClick={() => navigate('/accounts')}
+                  className="w-full py-2.5 rounded-xl font-bold text-sm border-none cursor-pointer mb-2 bg-teal-500/10 text-teal-400">
+                  🏦 Manage Bank Accounts
+                </button>
                 <button onClick={async () => { await logoutUser(); clearAccessToken(); localStorage.removeItem('user'); navigate('/'); }}
                   className="w-full py-3 rounded-xl font-bold text-sm border-none cursor-pointer hover:opacity-80 transition-all"
                   style={{background:'#fff0f0', color:'#e74c3c', fontFamily:"'Sora', sans-serif"}}>

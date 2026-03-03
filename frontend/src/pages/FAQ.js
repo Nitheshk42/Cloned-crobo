@@ -94,7 +94,7 @@ const faqCategories = [
     category: '💸 Fees & Pricing',
     faqs: [
       {
-        q: 'How much does BondPay charge per transfer?',
+        q: 'How much does Draviṇa charge per transfer?',
         a: 'Just $0.99 flat fee per transfer — no percentage cuts, no hidden charges. Banks charge $25+ and Western Union charges $15+. We keep it simple and transparent.'
       },
       {
@@ -102,7 +102,7 @@ const faqCategories = [
         a: 'Never. We use the live mid-market rate with zero markup — the same rate you see on Google. The only charge is our $0.99 flat fee, shown upfront before you confirm.'
       },
       {
-        q: 'Why is BondPay so much cheaper than banks?',
+        q: 'Why is Draviṇa so much cheaper than banks?',
         a: "Banks have massive overheads — physical branches, legacy systems, and large staff. We're fully digital, which means we pass those savings directly to you. That's how we can charge just $0.99."
       },
     ]
@@ -124,7 +124,7 @@ const faqCategories = [
       },
       {
         q: 'What happens if my transfer fails?',
-        a: 'If a transfer fails for any reason, the full amount including the $0.99 fee is refunded to your BondPay wallet within 24 hours. Our support team will also notify you with the reason.'
+        a: 'If a transfer fails for any reason, the full amount including the $0.99 fee is refunded to your Draviṇa wallet within 24 hours. Our support team will also notify you with the reason.'
       },
     ]
   },
@@ -132,11 +132,11 @@ const faqCategories = [
     category: '🔒 Security & Safety',
     faqs: [
       {
-        q: 'Is my money safe with BondPay?',
+        q: 'Is my money safe with Draviṇa?',
         a: 'Yes. We use bank-level 256-bit encryption, JWT authentication with secure httpOnly cookies, and never store your card details. Every transfer goes through automated fraud detection before processing.'
       },
       {
-        q: 'How does BondPay protect my personal data?',
+        q: 'How does Draviṇa protect my personal data?',
         a: "Your data is encrypted at rest and in transit. We never sell your personal information to third parties. Passwords are hashed using bcrypt — even our team can't see them."
       },
       {
@@ -153,12 +153,12 @@ const faqCategories = [
         a: 'Currently we support 7 destinations: India 🇮🇳, United Kingdom 🇬🇧, Europe 🇪🇺, Australia 🇦🇺, Canada 🇨🇦, Singapore 🇸🇬, and UAE 🇦🇪. We are adding more countries every month!'
       },
       {
-        q: 'What exchange rate does BondPay use?',
+        q: 'What exchange rate does Draviṇa use?',
         a: 'We use live mid-market rates updated every 30 seconds from global financial markets via multiple rate providers. The rate you see in the calculator is the rate you get — guaranteed.'
       },
       {
         q: 'Can I send money from any country?',
-        a: 'Currently BondPay is available for senders based in the USA. We auto-detect your location and currency when you open the app. International sender support is coming soon!'
+        a: 'Currently Draviṇa is available for senders based in the USA. We auto-detect your location and currency when you open the app. International sender support is coming soon!'
       },
     ]
   },
@@ -174,11 +174,11 @@ const faqCategories = [
         a: "You'll need your recipient's full name, bank account number, and IFSC code (for India) or SWIFT/routing code (for international transfers). You can save recipients for faster future transfers."
       },
       {
-        q: 'Can I use BondPay without creating an account?',
+        q: 'Can I use Draviṇa without creating an account?',
         a: 'You can use the live rate calculator on our homepage without an account. To send money, you need to create a free account — it takes less than 2 minutes!'
       },
       {
-        q: 'How do I add money to my BondPay wallet?',
+        q: 'How do I add money to my Draviṇa wallet?',
         a: "You can add money to your wallet from your Dashboard using the 'Add Money' button. Funds are added instantly and can be used immediately for transfers."
       },
     ]
@@ -235,7 +235,7 @@ function FAQ() {
             </span>
           </h1>
           <p className="mt-3 m-0" style={{color:'rgba(255,255,255,0.4)', fontSize:'clamp(14px, 1.5vw, 17px)'}}>
-            Everything you need to know about sending money with BondPay
+            Everything you need to know about sending money with Draviṇa
           </p>
         </div>
 

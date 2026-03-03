@@ -9,12 +9,15 @@ const transferRoutes = require('./routes/transferRoutes');
 const paymentRoutes = require('./routes/paymentRoutes');
 const recipientRoutes = require('./routes/recipientRoutes');
 const swaggerSpec = require('./swagger');
+const accountRoutes = require('./routes/accountRoutes');
+const utilRoutes = require('./routes/utilRoutes');
+
 
 const app = express();
 
 // Middleware
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:3001', 'https://localhost:3000', 'https://localhost:3001', 'hhttps://dravina-62qg.onrender.com'],
+  origin: ['http://localhost:3000', 'http://localhost:3001', 'https://localhost:3000', 'https://localhost:3001', 'https://dravina-62qg.onrender.com'],
   credentials: true,
 }));
 // For Stripe webhooks, we need raw body, so we set this route before the JSON parser
@@ -31,6 +34,8 @@ app.use('/api/auth', authRoutes);
 app.use('/api/transfer', transferRoutes);
 app.use('/api/payment', paymentRoutes);
 app.use('/api/recipient', recipientRoutes);
+app.use('/api/accounts', accountRoutes); 
+app.use('/api/utils', utilRoutes);
 
 // Test route
 app.get('/', (req, res) => {

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
-import { loginUser, googleAuth, setAccessToken } from '../services/api';
+import { loginUser, googleAuth, setAccessToken, getRates } from '../services/api';
 import { useLocation } from 'react-router-dom';
 import { detectUserCurrency } from '../utils/detectLocation';
 
@@ -97,18 +97,17 @@ function Login() {
 
 
   useEffect(() => {
-    const fetchRates = async () => {
-      try {
-        const res = await fetch('https://api.frankfurter.app/latest?from=USD&to=GBP,EUR,INR,AUD,CAD,SGD,AED');
-        const data = await res.json();
-        setRates({...data.rates, USD: 1});
-      } catch {
-        setRates({INR:83.12,GBP:0.79,EUR:0.92,AUD:1.53,CAD:1.36,SGD:1.34,AED:3.67,USD:1});
-      }
-      setRatesLoading(false);
-    };
-    fetchRates();
-  }, []);
+  const fetchRates = async () => {
+    try {
+      const response = await getRates();
+      setRates(response.data.rates);
+    } catch {
+      setRates({INR:83.12,GBP:0.79,EUR:0.92,AUD:1.53,CAD:1.36,SGD:1.34,AED:3.67,USD:1});
+    }
+    setRatesLoading(false);
+  };
+  fetchRates();
+}, []);
 
   const location = useLocation();
 useEffect(() => {
